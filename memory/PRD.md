@@ -1,7 +1,7 @@
 # Pivvix — Product and Website Brief
 
 ## Status
-Two corporate-only marketing homepage design samples are implemented and awaiting testing and user comparison. These are illustrative frontend previews, not a functional hiring application. The backend remains the untouched FastAPI/MongoDB starter.
+Two corporate-only marketing homepage design samples are implemented and tested, ready for user comparison. These are illustrative frontend previews, not a functional hiring application. The backend remains the untouched FastAPI/MongoDB starter.
 
 ## Confirmed decisions and current task
 - Initial deliverable: polished marketing website for the existing product.
@@ -13,14 +13,14 @@ Two corporate-only marketing homepage design samples are implemented and awaitin
 - Shared corporate copy, Nova state sample, evidence scorecard inspector, workflow, closing CTA. Responsive mobile menu. Informational booking/design-notes dialogs; no data collected or submitted.
 - Main files: frontend/src/App.js, App.css, components/marketing/PreviewSections.jsx, components/marketing/ProductPreviews.jsx.
 - Sample interview/scorecard interactions are MOCKED, explicitly labeled illustrative. Book a demo is a read-only preview dialog, not a real scheduling integration.
-- Testing pending; no credentials are needed.
+- Testing complete: iteration_1 functional suite passed; iteration_2 verified the cosmetic overlap fix across both concepts at 320–1920px. No outstanding issues or credentials required.
 
 ## Original user intent
 Build a website for an AI hiring startup serving corporate hiring teams and candidates (the original concept mentions candidate resume tracking and editing). Act as a website designer, ask targeted questions, and agree a high-level design direction before coding.
 
 User's explicit instruction: "ask me questions as a web designer so that it will be easier for you to build I will also provide you our tools features and information from which you can take reference. The document also explains how the website should be and all, just ignore those things and just take reference for tool features".
 
-Latest user message: "I have attached the file".
+Latest user message: "create 2 sample previews and if needed we can make mix of that". Completed and tested; awaiting visual feedback.
 
 Language: English.
 
@@ -72,40 +72,49 @@ Language: English.
 - Do not invent customers, testimonials, metrics, certifications, team size, funding, or company facts.
 - SOC 2/ISO certification status is unconfirmed; no certification badge/claim without verification.
 
-## Design consultation
-- Design agent produced `/app/design_guidelines.json`, PROPOSED/UNAPPROVED.
-- Recommended visual concept: dark graphite, warm white, restrained amber accent; bold editorial sans typography; asymmetric layouts; product-led interview and scorecard visuals.
-- Alternative: warm off-white, charcoal, muted green, lighter editorial styling.
-- No explicit visual preferences have been supplied by the user. Neither direction is approved.
-- Review caveat: the generated design JSON contains overreaching draft content (a Production-Verified badge, inferred roadmap items, live sandbox CTA, unsupported branding, and an outcomes strip echoing document advice). These MUST NOT be implemented. The JSON includes a review_status field recording these issues. Use only the visual concepts pending user approval, and regenerate a clean final design brief before coding.
-- Independent navigation proposal for discussion: Product, For Hiring Teams, For Candidates, About. Exact scope and CTA are not chosen.
+## Design previews completed (2026-02 session)
+- `/app/design_guidelines.json` is the two-concept blueprint. Approval is for producing samples, NOT approval of a final design.
+- Dark Precision: graphite, warm amber, Bricolage Grotesque display type, interview-studio visual, evidence card on the left, bordered workflow cards.
+- Light Editorial: warm paper, forest green, DM Serif Display headings, rounded folio composition, evidence ledger on the right, open ruled workflow layout.
+- Both use Manrope body text and IBM Plex Mono metadata, original SVG interview imagery, shared corporate copy, no stock photos.
+- Both contain navigation, hero, interactive Nova visual states, selectable competency evidence, workflow, closing demo CTA, footer, and a fixed concept-switch dock.
+- Routes `/`, `/preview/dark`, `/preview/light` work with direct loading and navigation. Unknown routes redirect home.
+- Mobile navigation, dialog keyboard access and focus return, reduced-motion handling, and descriptive test IDs are implemented.
+- Book a demo opens an informational preview dialog. No calendar, contact endpoint, inquiry form or data transmission is connected.
+- Design notes explain both directions and the possibility of combining elements after review.
 
-## Next decisions / P0
-1. Confirm initial scope: marketing website vs website plus illustrative product previews vs functioning corporate/candidate application.
-2. Confirm audience weighting and treatment of candidate resume tools missing from the attachment.
-3. Approve visual direction or provide brand constraints.
-4. Choose primary conversion action (e.g., book demo, request access, explore a product preview).
-5. Use Pivvix as the document-supplied name unless user corrects it; no existing logo supplied.
+## Verification completed
+- Production frontend build compiled successfully.
+- Full frontend QA: `/app/test_reports/iteration_1.json` — all functional flows passed; one cosmetic note overlapped the Speaking control.
+- Fixed note placement using relative document flow and decorative-only edge overlap in App.css.
+- Targeted QA: `/app/test_reports/iteration_2.json` — no issues. Both concepts verified at widths 1920, 1440, 768, 390, 320; no horizontal overflow, note/control collisions, or footnote collisions. Nova controls click normally.
+- Routing, switcher, browser history, deep-link loads, all scorecard states, section links, mobile menu, booking and notes dialogs passed. No console/page errors.
+- No test credentials needed. No backend tests applicable: backend intentionally unchanged for these frontend-only samples.
 
-## Testable implementation plan AFTER approval
-1. Finalize content inventory and clean design brief. Verify every public product claim against the extracted capability boundaries and confirmed user input.
-2. Implement approved site structure and responsive navigation. Verify each route/section and mobile navigation.
-3. Implement approved product illustrations and conversion flow, explicitly labeling any simulated preview. Verify controls, CTA destination, validation, and submission result as applicable.
-4. Only if a working application is explicitly selected: agree an MVP subset, data model, and integrations first; implement one end-to-end hiring/candidate flow before expanding. Verify persistence, authorization, and data boundaries.
-5. Run one visual smoke check and focused testing agent after implementation; fix reported defects and update memory.
+## Prioritized next steps
+### P0 — Await user visual feedback
+- User compares Dark Precision and Light Editorial via the bottom switcher.
+- Ask which typography, palette, layout, or product visuals they prefer, only when feedback arrives.
+- If requested, make a hybrid of selected elements; do not arbitrarily select a final direction.
 
-## Conditional backlog — not build authorization
-- Corporate dashboard and candidate dashboard; resumes, jobs, and candidate persistence/routes if functional product scope is approved.
-- AI resume processing/evaluation if approved; use integration playbook first.
-- Real-time voice/video Nova is a substantial separate integration, not equivalent to a text LLM demo; scope/provider approval required.
-- File uploads require persistent object storage and integration playbook; never store uploads as Base64 in MongoDB.
-- Authentication requires integration playbook before any auth implementation. Do not ask auth-provider choices unless user requests auth.
-- Do not add payments, external integrations, certifications, or a client portal just because mentioned in the source document.
-- No refactoring needed at this stage.
+### P1 — After a direction is approved
+- Refine the chosen direction into the complete corporate marketing website with Book a demo as primary action.
+- Agree final page scope and copy. Continue excluding unverified social proof, certifications, integrations, and measured claims.
+- Actual demo-booking connection is NOT part of the current sample task; gather destination/provider only when live booking is explicitly requested, and use integration playbook before connecting an external service.
 
-## Architecture and testing
-- Frontend: React starter `/app/frontend/src/App.js`, Tailwind and existing UI components.
-- Backend: FastAPI `/app/backend/server.py`; only starter `/api/`, `/api/status` routes.
-- Database: MongoDB; business schema not defined.
-- No integrations implemented; no test credentials; no test reports yet.
-- Use current frontend REACT_APP_BACKEND_URL for preview; never rely on an older session URL.
+### P2 — Deferred / conditional backlog
+- Candidate-side pages and resume tools explicitly deferred because still under discussion. Do not suggest building them as a next action without a user priority change.
+- No corporate dashboard/backend CRUD/AI interview implementation in current marketing-site scope.
+- No live sourcing, ATS integrations, payments, or client portal authorized.
+- Optional relevant design enhancement: guided answer-to-scorecard animation illustrating traceability. Not built or requested.
+- No refactoring tasks necessary now; shared components avoid duplicating the content between concepts.
+
+## Architecture
+- Frontend: React, React Router, Tailwind + App.css, Lucide, Shadcn Button/Dialog.
+- App.js contains shell, navigation, routing, comparison dock and dialogs.
+- components/marketing/PreviewSections.jsx contains hero, evidence, workflow, and closing sections.
+- components/marketing/ProductPreviews.jsx contains original SVG Nova visual and local state interactions, sample scorecards and evidence.
+- public/index.html updated title, description and font loading. ui/dialog.jsx close control has test ID.
+- Backend: untouched FastAPI `/app/backend/server.py`; only starter `/api/`, `/api/status` routes. MongoDB business schema not defined.
+- No API calls, new backend integrations, or authentication introduced by this task.
+- Current preview URL source remains frontend REACT_APP_BACKEND_URL; never hardcode an older session URL into API calls.

@@ -1,0 +1,39 @@
+{
+  "summary": "Targeted retest for floating annotation (.evidence-float) overlap with Nova state buttons on /preview/dark and /preview/light. Measured geometry at 1920/1440/768/390/320px widths. Annotation sits fully below all three state pills (Listening/Thinking/Speaking) on both concepts at every breakpoint. No horizontal overflow. No collision with .visual-footnote. State buttons clickable without force; caption and current-state update correctly for all three states on both concepts. Concept switcher (switch-dark, switch-light) present and interactive.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "geometry_results": {
+    "dark": {
+      "1920": {"max_btn_bottom": 689.5, "evidence_top": 709.5, "gap": 20, "overflow": false, "collision_with_footnote": false},
+      "1440": {"max_btn_bottom": 689.5, "evidence_top": 709.5, "gap": 20, "overflow": false, "collision_with_footnote": false},
+      "768": {"max_btn_bottom": 654, "evidence_top": 674, "gap": 20, "overflow": false, "collision_with_footnote": false},
+      "390": {"max_btn_bottom": 1073.06, "evidence_top": 1093.06, "gap": 20, "overflow": false, "collision_with_footnote": false},
+      "320": {"max_btn_bottom": 1088.70, "evidence_top": 1108.70, "gap": 20, "overflow": false, "collision_with_footnote": false}
+    },
+    "light": {
+      "1920": {"max_btn_bottom": 712, "evidence_top": 727, "gap": 15, "overflow": false, "collision_with_footnote": false},
+      "1440": {"max_btn_bottom": 712, "evidence_top": 727, "gap": 15, "overflow": false, "collision_with_footnote": false},
+      "768": {"max_btn_bottom": 702.5, "evidence_top": 717.5, "gap": 15, "overflow": false, "collision_with_footnote": false},
+      "390": {"max_btn_bottom": 1176.75, "evidence_top": 1193.75, "gap": 17, "overflow": false, "collision_with_footnote": false},
+      "320": {"max_btn_bottom": 1238.31, "evidence_top": 1255.31, "gap": 17, "overflow": false, "collision_with_footnote": false}
+    }
+  },
+  "state_clicks": {
+    "dark": {"listening": "Nova is listening", "thinking": "Nova is thinking", "speaking": "Nova is speaking"},
+    "light": {"listening": "Nova is listening", "thinking": "Nova is thinking", "speaking": "Nova is speaking"},
+    "force_required": false
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Annotation overlap fix verified. CSS override using position:relative + margin:-8px 0 0 auto places .evidence-float fully below all Nova state buttons at every tested breakpoint (320-1920) on both /preview/dark and /preview/light. No regressions in state-click interactivity or concept switcher. No console errors."
+}

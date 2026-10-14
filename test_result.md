@@ -107,22 +107,22 @@ backend: []
 frontend:
   - task: "Two responsive concept previews with shared corporate content"
     implemented: true
-    working: "pending"
+    working: true
     file: "frontend/src/App.js, frontend/src/App.css, frontend/src/components/marketing/PreviewSections.jsx"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "pending"
         agent: "main"
         comment: "Built / and /preview/dark as Dark Precision and /preview/light as Light Editorial with fixed comparison dock, mobile menu, section links, and honest sample-only booking and design-notes dialogs."
   - task: "Interactive illustrative interview states and scorecard evidence"
     implemented: true
-    working: "pending"
+    working: true
     file: "frontend/src/components/marketing/ProductPreviews.jsx"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "pending"
         agent: "main"
@@ -147,3 +147,6 @@ test_plan:
 agent_communication:
   - agent: "main"
     message: "Frontend-only design samples; backend untouched. No credentials, no new integrations, no real booking. All demonstrations are explicitly illustrative. Verify both themes, 1920/1440 desktop and 390/320 mobile plus tablet. Check all visible interactive elements have unique data-testid."
+
+
+# QA completion: iteration_1 passed all functionality. Its cosmetic annotation overlap was fixed in App.css. iteration_2 passed targeted retest on both concepts at 1920/1440/768/390/320px, with no overflow or overlapping controls. No outstanding defects. Production frontend build compiled successfully. Reports: /app/test_reports/iteration_1.json and iteration_2.json.

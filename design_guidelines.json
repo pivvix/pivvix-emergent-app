@@ -2,7 +2,7 @@
   "project_name": "Pivvix",
   "blueprint_version": "2.0.0-implementation-ready",
   "blueprint_scope": "Two visually distinct browsable sample homepage previews (Dark Precision vs Light Editorial) for Pivvix corporate marketing site with shared verified product capabilities, sample switcher, and non-transacting Book a Demo modal preview.",
-  "review_status": "APPROVED_BLUEPRINT_SPECIFICATION: Previous unapproved draft replaced and cleaned. Hallucinated production-verified claims, fake metrics/percentages, fake customer logos, fake live integrations, and unconfirmed candidate-side features are completely eliminated. Candidate resume portal is deferred per explicit user instruction. All product showcase data across both concepts is strictly labeled as illustrative mock previews. Primary call to action is standardized as 'Book a demo' with an honest, read-only demo booking dialog.",
+  "review_status": "SAMPLE_PREVIEW_BLUEPRINT: User approved creating two samples, NOT a final direction. Previous inaccurate draft replaced. Product capabilities are sourced from the user document, not verified in this starter app. Candidate side is deferred. All product showcase data is illustrative. Book a demo opens a read-only notice with no calendar connection and no data submission; no inquiry form was implemented. Final direction or hybrid awaits user review.",
   "user_directives": {
     "app_type": "marketing_site_two_previews",
     "target_audience": "Corporate hiring teams, talent leaders, and engineering hiring managers",
