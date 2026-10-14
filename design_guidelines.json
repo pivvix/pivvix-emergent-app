@@ -1,285 +1,254 @@
 {
   "project_name": "Pivvix",
-  "blueprint_version": "2.0.0-implementation-ready",
-  "blueprint_scope": "Two visually distinct browsable sample homepage previews (Dark Precision vs Light Editorial) for Pivvix corporate marketing site with shared verified product capabilities, sample switcher, and non-transacting Book a Demo modal preview.",
-  "review_status": "SAMPLE_PREVIEW_BLUEPRINT: User approved creating two samples, NOT a final direction. Previous inaccurate draft replaced. Product capabilities are sourced from the user document, not verified in this starter app. Candidate side is deferred. All product showcase data is illustrative. Book a demo opens a read-only notice with no calendar connection and no data submission; no inquiry form was implemented. Final direction or hybrid awaits user review.",
+  "blueprint_version": "3.0.0-chromatic-editorial-preview",
+  "implementation_notes": "Implemented third concept at /preview/chromatic. Actual content palette deliberately constrained to terracotta and deep blue plus their tints, respecting user request not to mix too many colours. Do NOT add the green, emerald, yellow, or separate marigold suggestions below. Nova window is saturated blue with a terracotta-tinted frame and cream caption; evidence uses warm orange tint and the gap state uses pale blue. Workflow fills are pale blue, warm peach, and deep blue. Closing banner is deep blue with a peach CTA. Original Dark Precision and Light Editorial source styles remain intact; only comparison controls and notes expanded. Source code and memory/PRD.md are authoritative for implemented details. No new marketing copy or hero design-note callout was added.",
+  "blueprint_scope": "Implementation blueprint for adding Concept 03 ('Chromatic Editorial' / 'Vivid Atelier') as a third browsable preview alongside existing Dark Precision and Light Editorial marketing samples for Pivvix. Does not alter candidate-deferred scope, maintains shared Nova/scorecard/workflow data, preserves exact existing light background #f7f6f0, and updates routing, comparison controls, and design dialogs.",
   "user_directives": {
-    "app_type": "marketing_site_two_previews",
+    "app_type": "marketing_site_three_previews",
     "target_audience": "Corporate hiring teams, talent leaders, and engineering hiring managers",
-    "deferred_scope": "Candidate-facing resume tools, portals, and applicant tracking accounts deferred (in discussion phase)",
+    "deferred_scope": "Candidate-facing resume tools, candidate portals, and applicant tracking accounts remain deferred (still in discussion phase)",
     "primary_cta": "Book a demo",
-    "interactive_preview_requirement": "Browsable concept switcher allowing stakeholders to evaluate Option A (Dark Precision) and Option B (Light Editorial) side-by-side or individually, with simulated live Nova interview states and evidence scorecard inspector.",
-    "booking_modal_requirement": "Read-only demo booking preview dialog with clear explicit disclaimer stating no booking request or transactional data is transmitted."
+    "background_rule": "Preserve the light version background palette (--page #f7f6f0) exactly for the third preview. Do NOT change it to dark or cold stark white.",
+    "content_filling_rule": "Make boxes, cards, containers, callouts, and content highlights more colourful, energetic, and materially distinct, while avoiding chaotic multi-colour rainbow gradients.",
+    "comparison_rule": "Keep original Dark Precision and Light Editorial previews completely intact and accessible so stakeholders can compare all three directions directly."
   },
-  "shared_marketing_content_model": {
-    "brand_name": "Pivvix",
-    "core_value_proposition": "Structured, voice-and-video conversational first-round interviews led by Nova — grounding every competency rating in verbatim candidate evidence while leaving the final hiring call to human teams.",
-    "verified_nova_capabilities": [
-      {
-        "id": "conversational_depth",
-        "name": "Adaptive Conversational Probing",
-        "summary": "Adapts follow-ups to candidate answers, asks for elaboration when needed, and advances gracefully after repeated unclear responses."
-      },
-      {
-        "id": "state_transparency",
-        "name": "Live State Transparency & Captions",
-        "summary": "Real-time visual state awareness (Listening, Thinking, Speaking) with persistent, synchronized interview question captions."
-      },
-      {
-        "id": "evidence_scorecard",
-        "name": "Evidence-Linked Competency Scorecard",
-        "summary": "Every score links directly to candidate quotes and identified evidence gaps, supporting a distinct 'Needs Review' state instead of artificial pass/fail binaries."
-      },
-      {
-        "id": "recruiter_pipeline",
-        "name": "Structured Recruiter Pipeline",
-        "summary": "Job-specific knockout screening, candidate stages (Sourced to Offer), reusable talent pools, and shareable hiring reports."
-      }
+  "concept_identity": {
+    "recommended_two_word_name": "Chromatic Editorial",
+    "alternative_working_title": "Vivid Atelier",
+    "concept_number": "03",
+    "route_path": "/preview/chromatic",
+    "theme_class": "theme-chromatic",
+    "archetype_fusion": [
+      "Archetype 1 (Organic & Grounded Paper Base: unbleached linen #f7f6f0)",
+      "Archetype 3 (Tactile Color Blocking: saturated Venetian terracotta, deep French ultramarine, warm marigold)",
+      "Bauhaus / Swiss Exhibition Poster Layout: crisp structural geometry, high-contrast tinted ink surfaces, framed solid badge fills"
     ],
-    "sample_candidate_persona": {
-      "name": "Elena Rostova",
-      "target_role": "Senior Distributed Systems Engineer",
-      "interview_duration": "24m 12s completed",
-      "overall_recommendation": "Needs Review (Senior Bar)",
-      "competency_highlight": {
-        "title": "System Fault Tolerance & Partitioning",
-        "score": "4.2 / 5.0",
-        "status": "Needs Review",
-        "candidate_quote": "\"We segregated our raft consensus into three regional quorum rings. When cross-region latency spiked over 280ms, our lease coordinator degraded writes to local write-ahead logs rather than stalling the client buffer.\"",
-        "justification": "Candidate accurately articulated distributed consensus partitioning and degradation trade-offs under high network partition latency.",
-        "missing_evidence": "Did not detail data reconciliation mechanics after regional partitions heal."
+    "emotional_tone": "Warm, spirited, confident, intellectually vibrant, human-centered yet punchy",
+    "why_it_solves_user_problem": "Existing Light Editorial is muted olive-green tone-on-tone on paper, creating an archival feel that felt 'too stale' or washed out. Chromatic Editorial retains the calm, warm #f7f6f0 foundation but energizes internal cards, scorecard containers, Nova folio, and workflow panels with saturated terracotta (#c2410c), French ultramarine (#1d4ed8), and rich warm amber accents. Surfaces gain distinct tinted fills (#fff4ed, #eff6ff, #fefce8) with bold 1.5px architectural borders rather than faint hairlines."
+  },
+  "color_system": {
+    "theme_class": "theme-chromatic",
+    "variables": {
+      "--page": "#f7f6f0",
+      "--surface": "#ffffff",
+      "--raised": "#faeedd",
+      "--ink": "#1e2229",
+      "--muted": "#525964",
+      "--line": "#d9cfbe",
+      "--accent": "#c2410c",
+      "--accent-ink": "#ffffff",
+      "--soft-accent": "#ffedd5",
+      "--display": "'Bricolage Grotesque', sans-serif",
+      "--body": "'Manrope', sans-serif"
+    },
+    "coordinated_content_palette": {
+      "page_background": "#f7f6f0",
+      "surface_containers": {
+        "primary_cards": "#ffffff",
+        "nova_stage_fill": "#faeedd",
+        "nova_window_fill": "#ffffff",
+        "nova_caption_box": "#fff7ed",
+        "scorecard_container": "#ffffff",
+        "evidence_detail_box": "#f0fdf4",
+        "evidence_gap_box": "#fff7ed",
+        "workflow_card_01": "#eff6ff",
+        "workflow_card_02": "#fff7ed",
+        "workflow_card_03": "#f0fdf4",
+        "closing_section_banner": "#1e2430"
+      },
+      "structural_accents": {
+        "primary_brand_accent": "#c2410c",
+        "primary_brand_hover": "#9a3412",
+        "intelligence_blue": "#1d4ed8",
+        "intelligence_blue_soft": "#dbeafe",
+        "evidence_emerald": "#047857",
+        "evidence_emerald_soft": "#d1fae5",
+        "review_amber": "#b45309",
+        "review_amber_soft": "#fef3c7"
+      },
+      "text_contrast_compliance": {
+        "body_on_page": "#1e2229 on #f7f6f0 (Ratio 12.8:1 - WCAG AAA)",
+        "body_on_soft_orange": "#1e2229 on #ffedd5 (Ratio 11.9:1 - WCAG AAA)",
+        "muted_on_page": "#525964 on #f7f6f0 (Ratio 6.4:1 - WCAG AA)",
+        "primary_button_text": "#ffffff on #c2410c (Ratio 4.7:1 - WCAG AA)",
+        "accent_text_on_page": "#c2410c on #f7f6f0 (Ratio 4.6:1 - WCAG AA)",
+        "blue_heading_on_soft_blue": "#1e3a8a on #eff6ff (Ratio 11.2:1 - WCAG AAA)",
+        "closing_banner_heading": "#ffffff on #1e2430 (Ratio 15.2:1 - WCAG AAA)"
       }
     }
   },
-  "concept_previews": {
-    "concept_a": {
-      "id": "dark-precision",
-      "name": "Option A: Dark Precision (Acoustic Studio & Swiss Telemetry)",
-      "archetype": "Archetype 4 (Swiss & High-Contrast) + Studio Hardware Telemetry",
-      "creative_fusion": [
-        "High-fidelity hardware broadcast monitors & studio decibel VU meters",
-        "Swiss modernist typography with asymmetric data corridors and rigid hairpins",
-        "Tactical command center telemetry with amber acoustic kinetic feedback"
-      ],
-      "emotional_tone": "Authoritative, technical, focused, forensic, high-fidelity",
-      "color_system": {
-        "theme": "dark",
-        "background_primary": "#0A0B0D",
-        "background_secondary": "#111317",
-        "surface_card": "#16191F",
-        "surface_elevated": "#1D212A",
-        "border_subtle": "#252B35",
-        "border_prominent": "#38414E",
-        "text_primary": "#F3F5F7",
-        "text_secondary": "#9CA6B5",
-        "text_muted": "#5B6473",
-        "accent_brand": "#F59E0B",
-        "accent_brand_hover": "#D97706",
-        "state_listening": {
-          "label": "Listening",
-          "color": "#38BDF8",
-          "bg": "rgba(56, 189, 248, 0.12)",
-          "border": "rgba(56, 189, 248, 0.4)"
-        },
-        "state_thinking": {
-          "label": "Thinking",
-          "color": "#FBBF24",
-          "bg": "rgba(251, 191, 36, 0.12)",
-          "border": "rgba(251, 191, 36, 0.4)"
-        },
-        "state_speaking": {
-          "label": "Speaking",
-          "color": "#34D399",
-          "bg": "rgba(52, 211, 153, 0.12)",
-          "border": "rgba(52, 211, 153, 0.4)"
-        }
+  "typography": {
+    "pairing_strategy": "High-Impact Modernist Display (Bricolage Grotesque) + Precision Humanist Sans (Manrope) + Monospace Telemetry (IBM Plex Mono)",
+    "role_mappings": {
+      "hero_h1": "font-family: 'Bricolage Grotesque', sans-serif; font-size: 60px; font-weight: 700; letter-spacing: -2.5px; line-height: 1.06; color: #1e2229",
+      "hero_h1_em": "color: #c2410c; font-style: normal; font-weight: 800",
+      "section_headings": "font-family: 'Bricolage Grotesque', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -1.2px; line-height: 1.15; color: #1e2229",
+      "card_headings": "font-family: 'Bricolage Grotesque', sans-serif; font-size: 19px; font-weight: 600; letter-spacing: -0.4px; line-height: 1.3",
+      "body_text": "font-family: 'Manrope', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.85; color: #525964",
+      "eyebrows_and_tags": "font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: #c2410c"
+    }
+  },
+  "visual_enhancers_and_surfaces": {
+    "nova_composition": {
+      "outer_stage": "Filled with warm toasted sand (#faeedd) and framed with a 1.5px solid warm border (#ded3c0). Border-radius: 28px.",
+      "window_card": "Solid crisp white background (#ffffff) with bold 1.5px outline (#d9cfbe) and distinct layered offset shadow (box-shadow: 0 16px 36px -12px rgba(194, 65, 12, 0.12), 0 4px 12px rgba(0,0,0,0.04)).",
+      "visual_orbit": "Dynamic SVG orbit colored with primary warm terracotta (#c2410c) for Speaking, saturated cobalt (#2563eb) for Listening, and rich marigold (#d97706) for Thinking.",
+      "caption_card": "Tinted filled box (background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 8px) with terracotta eyebrow label and high-contrast dark text (#1e2229).",
+      "controls": "Capsule buttons with active filled state: background #c2410c, text #ffffff, shadow 0 2px 8px rgba(194, 65, 12, 0.25).",
+      "floating_badge": "Contrasting cobalt container (background: #eff6ff; border: 1.5px solid #bfdbfe; color: #1e40af) with bold icon and high-contrast text."
+    },
+    "scorecard_inspector": {
+      "container": "Solid white card with 1.5px warm border (#d9cfbe) and crisp shadow (box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.08)).",
+      "avatar_tag": "Terracotta pill (background: #ffedd5; color: #c2410c; font-weight: 700; border: 1px solid #fdba74).",
+      "recommendation_badge": "Vivid amber badge (background: #fef3c7; color: #92400e; border: 1px solid #fde68a; font-weight: 600).",
+      "competency_rows": {
+        "default": "Clean border-bottom with subtle hover background (#f8fafc).",
+        "active": "Filled with soft cobalt (background: #eff6ff; border: 1.5px solid #93c5fd; color: #1e3a8a).",
+        "progress_bars": "Height 5px; background track #e2e8f0; active fill #c2410c with rounded-full tips."
       },
-      "typography": {
-        "display_headline": "font-sans font-bold tracking-tight text-white",
-        "subheading": "font-sans font-normal text-slate-300 leading-relaxed",
-        "body": "font-sans text-slate-300",
-        "telemetry_data": "font-mono text-xs tracking-wider text-amber-400 uppercase",
-        "quote_evidence": "font-mono text-sm leading-relaxed text-slate-200 border-l-2 border-amber-500/70 pl-3 bg-amber-500/5 py-2",
-        "scale": {
-          "h1": "text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]",
-          "h2": "text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-snug",
-          "h3": "text-xl sm:text-2xl font-semibold tracking-tight",
-          "h4": "text-lg sm:text-xl font-medium",
-          "body": "text-base leading-relaxed text-slate-300",
-          "caption": "text-xs font-mono uppercase tracking-[0.2em] text-slate-400"
-        }
-      },
-      "layout_and_spacing": {
-        "header_height": "h-20",
-        "section_vertical_padding": "py-20 lg:py-28",
-        "container_max_width": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-        "hero_grid": "grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center",
-        "hero_left_col": "lg:col-span-6 space-y-6",
-        "hero_right_col": "lg:col-span-6",
-        "feature_bento_grid": "grid grid-cols-1 md:grid-cols-12 gap-6",
-        "surface_padding": "p-6 sm:p-8",
-        "border_radius": "rounded-xl border border-[#252B35]"
-      },
-      "original_product_illustrations": {
-        "hero_interviewer_terminal": {
-          "title": "Nova Acoustic Waveform & HUD Console",
-          "visual_concept": "Vector-drawn studio console with candidate video feed mock viewport, live dynamic audio waveform visualizer (SVG vertical metering bars responding to simulated states), state status badge selector (Listening/Thinking/Speaking), and synchronized real-time question caption bar.",
-          "interactive_hooks": "State toggle chips allowing recruiter to see Nova switch between Blue Listening, Amber Thinking, and Emerald Speaking states, complete with dynamic SVG soundwaves and matching caption text."
-        },
-        "scorecard_inspector_component": {
-          "title": "Forensic Competency Audit Terminal",
-          "visual_concept": "High-density data inspector with 1px graphite grid, split into candidate metadata banner, competency rating gauges, highlighted verbatim transcript citation with timestamp marker [14:28], identified missing evidence box, and final human decision prompt."
-        }
-      },
-      "mobile_adaptations": {
-        "navigation": "Sticky dark header with solid backdrop (bg-[#0A0B0D]/95 backdrop-blur-md) and collapsible hamburger drawer.",
-        "hero_order": "Hero typography stacked first, followed by compact Nova HUD interactive simulator with touch-optimized state switcher.",
-        "grid_collapse": "All 12-column grids collapse cleanly into single-column vertical cards with minimum touch target height 44px."
+      "evidence_detail": {
+        "with_quote": "Filled with pale mint/emerald (background: #f0fdf4; border: 1.5px solid #bbf7d0; border-left: 4px solid #059669; border-radius: 8px). Candidate quote rendered in bold 13.5px text.",
+        "without_quote_gap": "Filled with pale amber (background: #fffbeb; border: 1.5px solid #fde68a; border-left: 4px solid #d97706; border-radius: 8px)."
       }
     },
-    "concept_b": {
-      "id": "light-editorial",
-      "name": "Option B: Light Editorial (Warm Atelier & Archival Clarity)",
-      "archetype": "Archetype 1 (Organic & Grounded Trust) + Architectural Monograph",
-      "creative_fusion": [
-        "Swiss architectural monographs and heavyweight archival typography",
-        "Warm sand, unbleached linen, and forest slate tones",
-        "Humanistic court transcript and transparent legal journal layouts"
-      ],
-      "emotional_tone": "Warm, humane, transparent, unhurried, trustworthy, respectful",
-      "color_system": {
-        "theme": "light",
-        "background_primary": "#F7F5F0",
-        "background_secondary": "#EFECE4",
-        "surface_card": "#FFFFFF",
-        "surface_elevated": "#FAF9F5",
-        "border_subtle": "#DDD8CE",
-        "border_prominent": "#BCB5A8",
-        "text_primary": "#1C1E21",
-        "text_secondary": "#575D65",
-        "text_muted": "#7A828E",
-        "accent_brand": "#B45309",
-        "accent_brand_hover": "#92400E",
-        "state_listening": {
-          "label": "Listening",
-          "color": "#0284C7",
-          "bg": "rgba(2, 132, 199, 0.1)",
-          "border": "rgba(2, 132, 199, 0.35)"
-        },
-        "state_thinking": {
-          "label": "Thinking",
-          "color": "#B45309",
-          "bg": "rgba(180, 83, 9, 0.1)",
-          "border": "rgba(180, 83, 9, 0.35)"
-        },
-        "state_speaking": {
-          "label": "Speaking",
-          "color": "#047857",
-          "bg": "rgba(4, 120, 87, 0.1)",
-          "border": "rgba(4, 120, 87, 0.35)"
-        }
-      },
-      "typography": {
-        "display_headline": "font-serif font-normal tracking-tight text-[#1C1E21]",
-        "subheading": "font-sans font-normal text-stone-700 leading-relaxed",
-        "body": "font-sans text-stone-700",
-        "telemetry_data": "font-mono text-xs tracking-wider text-amber-800 uppercase",
-        "quote_evidence": "font-serif italic text-base leading-relaxed text-stone-900 border-l-2 border-stone-800/80 pl-4 bg-stone-100/70 py-2.5",
-        "scale": {
-          "h1": "text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.12]",
-          "h2": "text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight leading-snug",
-          "h3": "text-xl sm:text-2xl font-medium tracking-tight",
-          "h4": "text-lg sm:text-xl font-medium",
-          "body": "text-base leading-relaxed text-stone-700",
-          "caption": "text-xs font-mono uppercase tracking-[0.2em] text-stone-500"
-        }
-      },
-      "layout_and_spacing": {
-        "header_height": "h-20",
-        "section_vertical_padding": "py-20 lg:py-28",
-        "container_max_width": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-        "hero_grid": "grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center",
-        "hero_left_col": "lg:col-span-7 space-y-7",
-        "hero_right_col": "lg:col-span-5",
-        "feature_bento_grid": "grid grid-cols-1 md:grid-cols-12 gap-8",
-        "surface_padding": "p-8 sm:p-10",
-        "border_radius": "rounded-2xl border border-[#DDD8CE] shadow-sm"
-      },
-      "original_product_illustrations": {
-        "hero_interviewer_terminal": {
-          "title": "Nova Conversational Stage Folio",
-          "visual_concept": "Parchment-clean interview folio showing calm candidate portrait framing, tactile hairline audio resonance ribbon, floating archival status pill (Listening in slate sky, Thinking in ochre, Speaking in moss), and prominent legible question caption card.",
-          "interactive_hooks": "Gentle tabbed interview stages allowing recruiter to trigger sample questions on technical architecture, situational trade-offs, and wrap-up courtesies."
-        },
-        "scorecard_inspector_component": {
-          "title": "Archival Evidence Ledger",
-          "visual_concept": "Clean paper-inspired evaluation dossier with serif rubric headers, explicit quote callouts citing candidate Elena Rostova, side-by-side strengths and missing proof indicators, and clear human-in-the-loop validation signature."
-        }
-      },
-      "mobile_adaptations": {
-        "navigation": "Sticky warm-linen header with solid background (bg-[#F7F5F0]/95 backdrop-blur-md) and slide-out navigation sheet.",
-        "hero_order": "Hero story and proof statement on top, flowing naturally into interactive conversational folio.",
-        "typography_readability": "Serif font size stepped down on small screens (text-3xl on mobile, text-5xl on desktop) to preserve balanced line breaking."
-      }
-    }
-  },
-  "interactive_concept_switcher_bar": {
-    "position": "Fixed floating bottom or top-header toggle widget",
-    "design_guideline": "High-contrast switcher bar containing: 'Previewing Direction:', [Option A: Dark Precision] toggle, [Option B: Light Editorial] toggle, plus an info tooltip explaining both concepts share verified marketing capabilities for direct aesthetic comparison.",
-    "state_persistence": "Preserve active preview choice in component state or URL hash (#dark-precision / #light-editorial)."
-  },
-  "book_a_demo_modal_specification": {
-    "trigger": "All primary and header CTAs across both concepts trigger the same Book a Demo preview modal.",
-    "modal_title": "Schedule a Pivvix Product Walkthrough",
-    "modal_subtitle": "Experience Nova live conversational screening and auditable scorecards tailored to your hiring rubrics.",
-    "required_honest_disclaimer": "ILLUSTRATIVE PREVIEW NOTICE: No external calendar service or contact endpoint is connected. This dialog demonstrates the corporate inquiry form and does not transmit data.",
-    "form_fields": [
-      { "id": "full_name", "label": "Full Name", "placeholder": "Sarah Chen", "type": "text" },
-      { "id": "work_email", "label": "Work Email", "placeholder": "schen@company.com", "type": "email" },
-      { "id": "company_name", "label": "Company Name", "placeholder": "Acme Technologies", "type": "text" },
-      { "id": "hiring_volume", "label": "Estimated Monthly First-Round Interviews", "options": ["10 - 50 roles/mo", "50 - 250 roles/mo", "250+ roles/mo"] }
-    ],
-    "action_button": {
-      "label": "Confirm Sample Request",
-      "behavior": "Shows instant confirmation feedback state with dismiss button, reinforcing read-only preview mode."
-    }
-  },
-  "component_architecture_plan": {
-    "preview_shell": "/app/frontend/src/components/marketing/ConceptPreviewShell.js",
-    "switcher_bar": "/app/frontend/src/components/marketing/ConceptSwitcherBar.js",
-    "demo_modal": "/app/frontend/src/components/marketing/BookDemoModal.js",
-    "dark_preview": {
-      "root": "/app/frontend/src/components/marketing/dark/DarkPrecisionHomepage.js",
-      "header": "/app/frontend/src/components/marketing/dark/DarkHeader.js",
-      "hero": "/app/frontend/src/components/marketing/dark/DarkHeroSection.js",
-      "nova_hud": "/app/frontend/src/components/marketing/dark/DarkNovaHudSimulator.js",
-      "scorecard": "/app/frontend/src/components/marketing/dark/DarkScorecardAudit.js",
-      "pipeline_grid": "/app/frontend/src/components/marketing/dark/DarkPipelineGrid.js",
-      "closing_cta": "/app/frontend/src/components/marketing/dark/DarkClosingCta.js",
-      "footer": "/app/frontend/src/components/marketing/dark/DarkFooter.js"
+    "workflow_bento_steps": {
+      "card_01": "Light sky tint (background: #eff6ff; border: 1.5px solid #bfdbfe). Step tag pill in cobalt (#1d4ed8).",
+      "card_02": "Warm terracotta tint (background: #fff7ed; border: 1.5px solid #fed7aa). Step tag pill in terracotta (#c2410c).",
+      "card_03": "Fresh sage tint (background: #f0fdf4; border: 1.5px solid #bbf7d0). Step tag pill in emerald (#047857).",
+      "hover_effect": "translateY(-4px) with amplified saturated shadow reflecting the card's accent tint."
     },
-    "light_preview": {
-      "root": "/app/frontend/src/components/marketing/light/LightEditorialHomepage.js",
-      "header": "/app/frontend/src/components/marketing/light/LightHeader.js",
-      "hero": "/app/frontend/src/components/marketing/light/LightHeroSection.js",
-      "nova_folio": "/app/frontend/src/components/marketing/light/LightNovaFolio.js",
-      "scorecard": "/app/frontend/src/components/marketing/light/LightScorecardLedger.js",
-      "pipeline_grid": "/app/frontend/src/components/marketing/light/LightPipelineGrid.js",
-      "closing_cta": "/app/frontend/src/components/marketing/light/LightClosingCta.js",
-      "footer": "/app/frontend/src/components/marketing/light/LightFooter.js"
+    "closing_banner": {
+      "treatment": "Deep navy slate container (#1e2430) providing strong contrast against the #f7f6f0 page. White typography with vivid terracotta CTA button (#c2410c) and circular audio mark (#38bdf8)."
     }
+  },
+  "implementation_steps_for_main_agent": [
+    {
+      "step": 1,
+      "target_file": "/app/frontend/src/App.css",
+      "action": "Add .theme-chromatic variable definitions and custom element rules.",
+      "details": "Declare --page: #f7f6f0; --surface: #ffffff; --raised: #faeedd; --ink: #1e2229; --muted: #525964; --line: #d9cfbe; --accent: #c2410c; --accent-ink: #ffffff; --soft-accent: #ffedd5. Add chromatic-specific overrides for study-strip, nova-composition, nova-caption, evidence-detail, workflow-steps, and closing-section. Add .chromatic-swatch styles with background #faeedd and border-accent #c2410c."
+    },
+    {
+      "step": 2,
+      "target_file": "/app/frontend/src/App.js",
+      "action": "Update router, switcher dock, notes modal, and document title to support three concepts.",
+      "details": "1) Add route <Route path='/preview/chromatic' element={<ConceptPage key='chromatic' concept='chromatic' />} />. 2) Update ConceptSwitcher to render 3 buttons: Concept 01 (Dark Precision), Concept 02 (Light Editorial), Concept 03 (Chromatic Editorial) with data-testid='switch-chromatic'. 3) Update PreviewDialog direction notes to describe all 3 directions with distinct numbers 01, 02, 03. 4) Update document.title switch logic and study-strip concept-name banner to display '03 / CHROMATIC EDITORIAL'."
+    },
+    {
+      "step": 3,
+      "target_file": "/app/frontend/src/components/marketing/PreviewSections.jsx",
+      "action": "Add chromatic hero assurance badges and contextual design note.",
+      "details": "In Hero component, support concept === 'chromatic' with a vivid badge or design callout ('COLOUR & CLARITY: Saturated surfaces with calm linen foundation') while preserving the shared NovaPreview, EvidenceSection, Workflow, and ClosingSection components."
+    },
+    {
+      "step": 4,
+      "target_file": "/app/frontend/src/components/marketing/ProductPreviews.jsx",
+      "action": "Ensure existing data-testid and dynamic state styling respond cleanly to theme-chromatic classes.",
+      "details": "Ensure nova-controls active button has distinct high-contrast fill and competency-row.active renders the soft cobalt background seamlessly in theme-chromatic."
+    }
+  ],
+  "concept_dock_specification": {
+    "container_class": "concept-dock",
+    "testid": "concept-switcher",
+    "options": [
+      {
+        "id": "dark",
+        "route": "/preview/dark",
+        "number": "01",
+        "label": "Dark Precision",
+        "swatch_class": "dark-swatch",
+        "testid": "switch-dark"
+      },
+      {
+        "id": "light",
+        "route": "/preview/light",
+        "number": "02",
+        "label": "Light Editorial",
+        "swatch_class": "light-swatch",
+        "testid": "switch-light"
+      },
+      {
+        "id": "chromatic",
+        "route": "/preview/chromatic",
+        "number": "03",
+        "label": "Chromatic Editorial",
+        "swatch_class": "chromatic-swatch",
+        "testid": "switch-chromatic"
+      }
+    ]
+  },
+  "design_notes_dialog_specification": {
+    "dialog_testid": "notes-dialog",
+    "title": "Three directions. One clear product.",
+    "subtitle": "All three concepts tell the exact same corporate story. Compare the lighting, typographic atmosphere, surface color-blocking, and card treatment.",
+    "cards": [
+      {
+        "number": "01",
+        "title": "Dark Precision",
+        "summary": "Graphite (#0c0e10), warm amber (#f1b568), and acoustic telemetry. A high-density hardware studio aesthetic."
+      },
+      {
+        "number": "02",
+        "title": "Light Editorial",
+        "summary": "Warm paper (#f7f6f0), muted olive-green (#315b46), and DM Serif typography. Quiet, archival, and understated."
+      },
+      {
+        "number": "03",
+        "title": "Chromatic Editorial",
+        "summary": "Preserves the same warm paper base (#f7f6f0) while replacing muted fills with bold terracotta (#c2410c), French ultramarine, soft tinted card surfaces, and punchy Bricolage display headers."
+      }
+    ]
+  },
+  "testing_and_verification_requirements": {
+    "data_testids_to_verify": [
+      "preview-chromatic",
+      "switch-chromatic",
+      "switch-dark",
+      "switch-light",
+      "concept-switcher",
+      "concept-name",
+      "dock-design-notes",
+      "hero-title",
+      "hero-book-demo",
+      "hero-explore",
+      "nova-preview",
+      "nova-state-speaking",
+      "nova-state-listening",
+      "nova-state-thinking",
+      "nova-current-state",
+      "nova-caption",
+      "scorecard-preview",
+      "competency-problem-solving",
+      "competency-collaboration",
+      "competency-strategic-thinking",
+      "evidence-detail",
+      "evidence-quote",
+      "evidence-reason",
+      "evidence-followup",
+      "workflow-step-01",
+      "workflow-step-02",
+      "workflow-step-03",
+      "closing-book-demo",
+      "booking-preview-notice",
+      "design-notes-disclaimer"
+    ],
+    "verification_routes": [
+      "http://localhost:3000/preview/dark",
+      "http://localhost:3000/preview/light",
+      "http://localhost:3000/preview/chromatic"
+    ]
   },
   "UNIVERSAL GUIDELINES FOR MAIN AGENT": {
-    "file_extension_rule": "Use .js and .jsx files exclusively. Do not generate .tsx files.",
-    "testing_attributes": "All interactive elements (concept switchers, state tabs, demo modal triggers, form inputs, modal close buttons) MUST have data-testid attributes.",
-    "anti_ai_slop_rules": [
-      "NO generic centered cards with uniform gradients.",
-      "NO robot, brain, or crystal ball emojis (🤖, 🧠, 💡, 🔮).",
-      "NO unverified claims ('100% bias free', 'Production verified', fake 99.4% accuracy stats).",
-      "NO fake client logos or unsupported partner badges (e.g. Workday, Greenhouse, Ashby).",
-      "Headers and overlays must never have fully transparent backgrounds."
+    "file_extension_rule": "Use .js and .jsx files exclusively. Do not generate or convert to .tsx files.",
+    "preserved_specs_rule": "Do not delete or overwrite the design specifications for Dark Precision or Light Editorial. The third preview must coexist with them.",
+    "prohibited_elements": [
+      "No generic rainbow multi-color gradients (e.g. purple-to-pink or blue-to-green shiny gradients).",
+      "No AI assistant emojis (🤖, 🧠, 💡, 🔮, 🎯).",
+      "No unverified statistical claims ('99.8% precision', 'zero hallucination', 'guaranteed hire').",
+      "No fake customer logos or unsupported ATS partner emblems (e.g. Greenhouse, Workday, Ashby badges).",
+      "No live calendar booking API connections or forms that submit user data."
     ],
-    "surface_and_contrast": "Ensure minimum 4.5:1 text contrast for all body and metadata. Never use text-7xl or text-8xl for headings; keep maximum H1 at text-4xl sm:text-5xl lg:text-6xl.",
-    "illustrative_disclaimer": "Both previews must visibly state: 'Interactive Design Concept Preview — Illustrative Product Demonstration'."
+    "contrast_and_accessibility": "All text on surfaces must exceed 4.5:1 contrast against its background. Headers must never exceed text-6xl (maximum 60px). Mobile breakpoints must retain touch-target sizes of at least 44px.",
+    "interactive_preservation": "All existing interactive states (Nova listening/thinking/speaking audio orb, Scorecard competency switching, Book a demo dialog, Design notes dialog) MUST remain 100% operational on all three routes."
   }
 }

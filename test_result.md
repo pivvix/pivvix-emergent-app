@@ -127,6 +127,17 @@ frontend:
       - working: "pending"
         agent: "main"
         comment: "Manual listening/thinking/speaking state controls; three competency selections update reason, quote, evidence gap, timestamp. All data is illustrative; no live services."
+  - task: "Third Chromatic Editorial preview and three-way comparison"
+    implemented: true
+    working: "pending"
+    file: "frontend/src/App.js, frontend/src/App.css, frontend/src/components/marketing/ProductPreviews.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "pending"
+        agent: "main"
+        comment: "Added /preview/chromatic with same #f7f6f0 background as original light, two accent families terracotta/deep blue with filled Nova, scorecard, workflow and CTA panels. Expanded dock/notes to three concepts with responsive mobile controls. Original two concept styles/content preserved. Verify state interactions, evidence-gap treatment, dialogs, routing, tablet/mobile overflow and regressions."
 metadata:
   created_by: "main_agent"
   version: "1.0"

@@ -1,7 +1,14 @@
 # Pivvix — Product and Website Brief
 
 ## Status
-Two corporate-only marketing homepage design samples are implemented and tested, ready for user comparison. These are illustrative frontend previews, not a functional hiring application. The backend remains the untouched FastAPI/MongoDB starter.
+Two corporate-only marketing homepage design samples are implemented and tested. A third preview, Chromatic Editorial, is being added in response to user feedback: preserve the exact warm off-white background, with richer coordinated colour in the content panels. These remain illustrative frontend previews, not a functional hiring application. The backend is unchanged.
+
+## Latest approved enhancement
+- User likes Light Editorial's background but finds its other fills too stale. Wants colourful boxes/content without too many mixed colours.
+- User selected: "Add it as a third preview to compare with the original light version".
+- Preserve original dark and light previews; add `/preview/chromatic` and three-way comparison controls.
+- Keep page background #f7f6f0. New surfaces use two coordinated accents, terracotta and deep blue, with tints; no rainbow or additional green/yellow accent families.
+- Test third-preview interactions, responsive three-way dock, and regression of original two concepts before completion.
 
 ## Confirmed decisions and current task
 - Initial deliverable: polished marketing website for the existing product.
