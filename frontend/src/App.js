@@ -9,7 +9,7 @@ import "@/App.css";
 const CONCEPTS = [
   { id: "dark", number: "01", name: "Dark Precision", description: "Graphite, warm amber, bold typography. An interview studio with a technical, focused character." },
   { id: "light", number: "02", name: "Light Editorial", description: "Warm paper, forest green, expressive serif type. An open, considered approach with a human feel." },
-  { id: "chromatic", number: "03", name: "Chromatic Editorial", description: "The same warm off-white background, brought to life with terracotta and deep blue. Rich card fills, clear contrasts, and a restrained two-accent palette." },
+  { id: "chromatic", number: "03", name: "Chromatic Editorial", description: "The Pivvix brand palette, strictly applied: Deep Petrol and Warm White across the site, with the dedicated Alabaster / Moss / Slate / Dark Emerald palette reserved for the Nova interview window — dark, cinematic, and alive." },
 ];
 
 export const Brand = () => (
