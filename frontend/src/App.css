@@ -374,4 +374,8 @@ button { cursor: pointer; }
   .closing-statement { font-size: 28px; } .concept-option > span:nth-child(2) { font-size: 9px; } .concept-option > svg { display: none; }
   .theme-light .nova-composition { padding-inline: 17px; } .theme-light .nova-caption { min-height: 139px; } .theme-light .nova-controls button { padding-inline: 8px; }
 }
+/* Keep the floating annotation below interactive controls, with only a decorative edge overlap. */
+.nova-composition .evidence-float { position: relative; bottom: auto; width: fit-content; max-width: 100%; margin: -8px 0 0 auto; }
+.theme-light .nova-composition { padding-bottom: 20px; }
+.theme-light .visual-footnote { position: static; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .preview-page *, .preview-page *::before, .preview-page *::after, .preview-dialog * { animation: none !important; transition: none !important; } }

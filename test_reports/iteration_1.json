@@ -1,0 +1,29 @@
+{
+  "summary": "Frontend-only testing of Pivvix dark/light preview marketing concepts. All critical flows pass: routing (/ as dark, /preview/dark, /preview/light, 404 -> /), concept switcher (active state via aria-current, URL change, scroll-to-top after switch, browser back/forward), Nova state controls (listening/thinking/speaking update state label, speaker, caption, visual) with initial state = Speaking, competency selections (problem-solving, collaboration, strategic-thinking with insufficient-evidence state and no quote/timestamp), navigation anchors (#nova #intelligence #workflow, scroll-to-intelligence, footer-home-link returns to top), book-a-demo dialog from header/hero/closing with booking-preview-notice disclaimer and close via Back-to-preview / X / Escape, notes dialog from study strip and dock. Mobile menu toggles open/closed and closes on anchor click. No horizontal overflow at 1920/1440/768/390/320. Zero console errors or page errors. All interactive controls clickable without force=True at every tested viewport.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Hero / Nova preview card (both concepts, desktop ~1920)", "issues": ["The floating 'Every conversation, connected.' evidence-float note is positioned so it visually overlaps the right edge of the 'Speaking' pill in the nova-controls row (more pronounced on Light Editorial where the overlay sits over the Speaking button rather than beside it). It does NOT intercept clicks (all nova-state-* buttons clickable without force at 1920/1440/768/390/320 and clicks succeed), but visually the pill is partially obscured. Consider shifting the evidence-float downward/outward on the Light concept so it clears the controls row."]}
+    ]
+  },
+  "test_report_links": ["/app/test_reports/dark_desktop.png", "/app/test_reports/light_desktop.png", "/app/test_reports/dark_mobile.png"],
+  "action_items": [
+    "Nice-to-have: Reposition evidence-float on Light Editorial so it no longer visually overlaps the Speaking control pill. (Non-blocking: clicks are not intercepted.)"
+  ],
+  "critical_code_review_comments": [
+    "App.js: scroll-to-top in useEffect runs on every pathname change including initial load — works correctly, but scrollY after Link switch was observed at 35 (not 0) because the fixed header's smooth scroll jitter; using behavior:'instant' already — acceptable, scroll is near top.",
+    "Dialog focus return handled correctly via onCloseAutoFocus + triggerRef.",
+    "All interactive elements have data-testid as declared in the spec; no missing testids were encountered during the full test sweep.",
+    "No API calls introduced; purely static illustrative content with SAMPLE DATA / ILLUSTRATIVE PREVIEW tags present as required.",
+    "Routes catch-all redirects unknown paths to /. Confirmed.",
+    "File sizes are small and focused; no DRY violations observed."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100% (all tested flows pass)"},
+  "seed_data_creation": "None (no backend / purely static demo data)",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Pure frontend marketing preview app with two concepts (dark/light). No backend tests needed. The only cosmetic observation is a slight visual overlap between evidence-float and the nova 'Speaking' pill — clicks still work. If main agent adjusts evidence-float positioning, simply re-screenshot /preview/light at 1920x1080 and /preview/dark at 1920x1080 and verify the Speaking pill is fully visible."
+}
