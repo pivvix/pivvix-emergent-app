@@ -1,0 +1,244 @@
+--- Document.iwa ---
+	gregorian
+January"
+February"
+August"	September"
+October"
+November"
+December*
+January*
+February*
+August*	September*
+October*
+November*
+December2
+TuesdayB	WednesdayB
+ThursdayB
+SaturdayJ
+TuesdayJ	WednesdayJ
+ThursdayJ
+SaturdayR
+1st quarter
+2nd quarter
+3rd quarter
+4th quarter
+1st quarter
+2nd quarter
+3rd quarter
+4th quarter
+Before Christ
+Anno Domini
+dd/MM/yy
+d MMMM y
+EEEE, d MMMM y
+h:mm:ss a
+h:mm:ss a z
+h:mm:ss a zzzz
+#,##,##0.###
+	#,##,##0%
+¤#,##,##0.00
+Application/Blank/ISOb
+Brother_HL_L2320D_series
+>%S'Y?-H'Y>5
+~?%w<.?-
+>%S'Y?-H'Y>5
+>%S'Y?-H'Y>5
+Standard TOC
+WPivvix Website Content Brief
+14 Oct 2026 · Prepared for @Umar
+How to use this
+This is a factual brief, not copy — every claim below is checked against the live codebase and the team's own Notion product-tracking as of this date, not against old docs or the current site's existing claims (some of which overstate what's shipped — see Claims to avoid). Write the actual page copy however fits the new design; just don't claim something this doc doesn't back.
+Three ground rules carried over from how the product already runs:
+No fabricated social proof. No customer logos, named testimonials, or performance stats until they're real and the named person/company has agreed to be quoted. The current site already ships these sections empty on purpose — keep that discipline, don't backfill it with placeholder names.
+No "India-first" framing, anywhere on the site.
+Write everything shipped in confident present tense — no "coming soon," no "in progress" hedging on real features. The one exception is compliance certifications (SOC 2 / ISO 27001), flagged separately below — those carry legal weight if overstated, so that line needs an explicit decision, not a copy-polish pass.
+Home
+Lead with the interview, not sourcing. The current hero ("intelligence behind better hiring decisions," sourcing+screening+interviewing in one platform) buries the actual differentiator under a generic category claim. The one thing a competitor can't easily say: candidates are interviewed by a real-time conversational AI — live back-and-forth voice and video, not a form or a recorded-question tool.
+Hero direction: open on the live AI interview itself (what it looks and sounds like to a candidate), then widen to the portal around it.
+What to showcase on this page, in order:
+The live AI interviewer ("Nova") conducting a real conversation — see The live interview section below for the concrete details to pull from.
+Evidence-linked scorecards — every score traceable to a reason and the candidate's own words.
+The recruiter pipeline around it: jobs, candidates, stage tracking, one dashboard.
+AI-assisted hiring reports a recruiter can generate and share.
+Outcomes band: keep the existing honest pattern — "One bar" (every candidate gets the identical structured interview), "24/7" (interviewing capacity with no calendar needed), "Minutes" (from application to a live interview invite), "Evidence" (every score has a reason and a reviewable moment behind it). These are capability statements, not measured metrics — don't swap them for invented numbers ("40% faster hiring," etc.) until there's a real measurement to cite.
+Testimonials / logos: leave empty until real, named, permission-granted quotes and customers exist. Do not add placeholder companies or quotes to make the page feel fuller — the current code already keeps these sections hidden entirely until real content exists; keep that behavior.
+Platform (the lifecycle page)
+The current page claims a few things that aren't actually built — see Claims to avoid. Here's what's real, organized the way the page already is (one block per stage):
+￼
+Framing note: every one of these is a real, working feature today — say so plainly, no hedging. Just don't extend the list with sourcing-from-the-open-web, JD-to-skill-graph parsing, or automated interview scheduling — those aren't built (detail in Claims to avoid).
+The live interview ("Nova") — the centerpiece
+This is the strongest, most concrete material in the product — lean on it. Everything below is a real, shipped behavior, not a design intention.
+It's a real conversation, not a chatbot bolted onto a video call. The interviewer speaks and listens in real time — live voice and video, adaptive follow-up questions, no turn-based form-filling.
+A visible presence candidates can actually read. Nova isn't a static avatar — she has three genuinely distinct visual states for listening, thinking, and speaking, each a different shape and motion, not just a color change. Every state is also spelled out in plain text on screen, so nothing depends on sound alone.
+Captions that never cut a question off. The question stays visible as long as it's live, sized to fit without ever truncating mid-sentence — built specifically after an early version clipped a real question partway through.
+The candidate sees themselves too. Their own camera appears as a small, moveable picture-in-picture over the interview — it still feels like a video call, not a voice call with a logo on screen.
+It handles a messy real conversation the way a good human interviewer would:
+A candidate who says "I don't know" or gives a one-word answer gets a warm invitation to say more — not an instant skip. Only after two unclear answers in a row does it move on.
+"Can you repeat that?" gets a natural, shorter restatement of the same question — never a robotic verbatim replay.
+A question is asked at most twice, then the interview moves on — the same rule a considerate human interviewer follows.
+It can tell the difference between a candidate struggling with a question and a candidate asking to end the interview — and never confuses the two.
+It closes out properly, every time. If a candidate asks to wrap up, or time runs out, Nova finishes what she's saying, says an actual goodbye, and only then ends the session — never an abrupt cutoff mid-sentence.
+Every interview follows a structured, job-specific plan — competencies defined per role, not a generic script — and adapts its follow-up depth to how complete each answer actually was.
+Fair by design. The interviewer is explicitly instructed to judge only the substance of an answer — never accent, fluency, or demeanor — and this is framed throughout as a first-round screen informing a human decision, never a final hire/no-hire call made by AI.
+Respectful of the candidate at the end. The completion screen never reveals a score or outcome — just a clear, human "thank you, the team will follow up."
+Intelligence / evaluation
+Evidence-linked scoring, concretely: every competency score comes with a one-to-two-sentence reason AND a verbatim (or near-verbatim) quote from the candidate's own answer. A reviewer can check any score in seconds against what was actually said — not take a black-box number on faith.
+A validated structure, every time. Scorecards follow one fixed, checked shape — overall score, a recommendation, per-competency scores with reasons and evidence, strengths, concerns, and anything the interview didn't get solid evidence on. A malformed or incomplete AI response is never saved as a scorecard.
+An honest middle ground. The recommendation scale isn't forced binary — "needs review" is a real outcome, not just yes/no.
+Says what it doesn't know. Competencies the interview couldn't get solid evidence on are flagged explicitly, rather than silently scored anyway.
+The same bar for everyone. Every candidate for a role is evaluated against the same structured, job-specific competency plan — not interviewer mood or a different question set per candidate.
+Caution — don't overclaim here: the current site's Intelligence page describes a "skill ontology" that parses job descriptions into a structured graph. That's not confirmed as a shipped capability in this form — keep this page to what's verified above (structured, job-specific competency plans + evidence-linked scoring), not a claim about automatic JD-to-graph parsing.
+Solutions
+A heads-up before writing this page: your own Notion tracks "Pivvix positioning and product category" as a formal decision that's still Proposed, not decided — no single adopted positioning statement or target-segment category exists yet. The current site's three segments (high-volume hiring, technical hiring, staffing & agencies) are reasonable framings given what's built, but they haven't been formally adopted internally.
+That doesn't need to block the revamp — the underlying product facts below are true regardless of which segment framing wins. Just know this page's segment framing is a choice still open, not settled fact, if you want to revisit it later.
+What's genuinely true across any segment framing, to build segment copy from:
+Every candidate for a role gets the identical structured interview and rubric — useful for "one consistent bar at volume."
+The interview plan is defined per job/competency, so it adapts to a technical role's actual skills, not a generic question bank.
+Interviewing capacity isn't gated by a human recruiter's calendar — relevant to any high-volume or multi-client (agency) framing.
+Every organization's data is fully isolated (see Security) — relevant to agencies running multiple clients through one account.
+Security
+Isolation is enforced at the database, not just the app. Every organization's jobs, candidates and interview data is protected by database-level row security — not only an application-level check — so one tenant's data cannot be queried by another even if a higher application layer had a bug. This was verified directly against the schema, not assumed.
+Admin actions are double-gated. Organization-wide views (admin analytics, role changes, billing) are restricted both at the database policy level and again on the server — hiding a menu item is never the only protection.
+AI usage is logged and auditable. Every AI evaluation is tied to a record a human can review.
+Compliance status — needs your sign-off before publishing, not a copy decision: the current site states SOC 2 Type II and ISO 27001 as "in progress" / "planned." Compliance certifications are the one claim type on this whole site where overstating status is a real legal/trust risk, not just an imprecise feature claim — so I've left this out of the "say it plainly" rule that applies everywhere else in this doc. Confirm current status with whoever owns that before your friend writes this page's copy.
+Company / About
+Keep this grounded in what the product actually does rather than company-stage claims I can't verify from code (team size, funding, timeline) — those are facts only you can supply accurately, and this page is the one most likely to be checked against reality by someone diligence-ing the company.
+Safe to state plainly: Pivvix exists to fix the first interview round — a live AI conducts it, produces an evidence-linked assessment, and a human makes the hiring call. Voice- and video-first, built so a hiring team's interview capacity isn't limited by how many people they can get on a human recruiter's calendar.
+No "India-first" language anywhere on this page, per your earlier note.
+Claims to avoid
+Things on the current live site that should not simply be carried forward into the revamp as-is — they describe capability beyond what's actually shipped:
+￼
+Appendix — full module truth table
+This table is a working reference for you, not page copy — it's more precise than any of the sections above on purpose, so you can see exactly what's checked and how solid each "Production" label is.
+￼
+Sources: direct code read of packages/web and packages/agents as of this date, cross-checked against the team's Notion "Pivvix — Product Modules" tracker.
+*
+2026-10-14T23:10:58+0530
+
+--- DataList-1733659-2.iwa ---
+No measured results exist yet. The current "Outcomes" band already handles this correctly — capability statements, not invented numbers. Keep that pattern for any new stat-shaped content.
+"India-first"
+Homepage
+Already shipped empty on purpose — keep empty until real, permissioned quotes/logos exist. Don't fill these in to make the page feel more established.
+9Specific performance stats ("X% faster," "Y hours saved")
+Intelligence page, nav
+(Not a tracked module — don't claim it.
+)Homepage lifecycle section, Platform page
+Anywhere
+'AI sourcing "from millions of profiles"
+^Not a tracked, built module today — there's no sourcing/discovery engine in the product yet.
+.Automated, timezone-aware interview scheduling
+Z"Fits your stack" — Greenhouse / Lever / Workday / Slack / Google Workspace integrations
+Security page
+Claim on the current site
+kAlready removed from the live pages per direct instruction — don't reintroduce it anywhere in the revamp.
+Platform page
+Why to drop or soften
+Platform/Solutions hero copy
+#SOC 2 / ISO 27001 compliance status
+$Named customer logos or testimonials
+="Skill ontology" — JDs parsed into a structured skill graph
+
+--- DataList-1733666-2.iwa ---
+The integrations page is real as a provider registry, but zero providers are actually connected yet — every one shows as "Coming soon" in the product itself. Either drop this row or reword to something honest like "built to connect with the tools you already use" without naming specific live integrations.*
+
+
+~Not confirmed as a shipped capability in this form. What's real: structured, job-specific competency plans (see Intelligence).*
+
+
+ZNeeds an explicit decision, not a copy pass — see the note at the end of Security above.*
+
+
+
+--- DataList-1733684-2.iwa ---
+rSequenced, templated candidate email campaigns with enrollment, open and reply tracking, and unsubscribe handling.
+	Analytics
+Recruiters build shareable hiring reports — manually or by asking in plain language (e.g. "shortlist the top 3 for this role") — and get an AI-drafted brief: summary, what stands out, what needs attention, candidate comparison, each point backed by evidence. Reports can be shared via a revocable link or exported as CSV.
+Team & organization
+A standing pool of sourced candidates, independent of any one job, so a strong candidate isn't lost when a role closes — re-surfaced for the next relevant opening, with fit shown against real interview evidence or resume match data when it exists.
+Outreach
+Every candidate tracked through a real stage pipeline — Sourced → Contacted → Screening → Interviewing → Offer → Hired/Rejected — with a full profile per candidate.
+A live recruiting-funnel view — pipeline stages, open roles, candidate volume — plus organization-wide performance analytics (sourcing, interviews, offers, hires, time-to-hire) for admins. Shown honestly: where the data can't yet support a trend (e.g. historical stage-by-stage conversion), the page says so rather than estimating.
+Candidates & pipeline
+	Screening
+The live AI interview
+What to say
+Recruiters build weighted, knockout-capable screening questionnaires per job. Candidates get a secure, tokenised link; responses are scored automatically and roll straight into the pipeline.
+The product's centerpiece — see the next section. Don't summarize it thinly here; link or point to the dedicated section/page.
+Create and manage every role in one place — a live job list and detail view, candidate counts and pipeline position per job, time-to-hire tracked from real closed roles (shown honestly once a role has actually closed, not estimated).
+Evaluation / Scorecards
+Talent Pool
+
+--- DataList-1733691-2.iwa ---
+Invite teammates with role-based access (Owner, Admin, Recruiter, Hiring Manager, Interviewer, Viewer), each organization's data fully isolated from every other — see Security.*
+
+
+Every interview produces a structured, evidence-linked scorecard — every competency score comes with a reason and a quote from what the candidate actually said. See Intelligence below.*
+
+
+
+--- DataList.iwa ---
+Integrations
+5Standing sourced-candidate pool, reusable across jobs
+	/settings
+5Public tokenised candidate questionnaire, auto-scored
+/interview-kits
+Live AI interview
+3AI-assisted, shareable hiring reports with evidence
+
+Production
+	Dashboard
+Talent Pool
+2Sequenced, templated email campaigns with tracking
+
+Scorecards
+>Evidence-linked evaluation generated from completed interviews
+/candidates
+	Analytics
+Member invitations and roles
+/settings/team
+Settings (general)
+&Cross-job hub over screening responses
+Interview Kits
+	Not built
+1Planned: shared review view, comparison, playback
+/talent-pool
+What the org is subscribed to
+*Org-wide recruiter performance, admin-only
+0Real-time candidate-facing AI interview ("Nova")
+/scorecards
+	Screening
+Assessments
+-Job list, detail, creation, per-job screening
+/settings/integrations
+/settings/billing
+
+/analytics
+Admin Analytics
+
+Candidates
+/settings/ai-usage
+Production (list + stage tracking); the individual candidate profile page works but still needs a visual-palette pass, not a functionality fix
+What it does
+AI Usage
+=Partial — real provider registry, zero live connections yet
+/admin-analytics
+Outreach
+	/outreach
+NProduction as an authoring surface; not yet wired into live interview sessions
+Authentication
+!Recruiting funnel and performance
+/screening/[token]
+/signin, /signup
+$Candidate records and pipeline stage
+/interview/[id]
+/reports
+Hiring Manager / Client Portal
+OLive KPIs, hiring funnel, recent activity, pipeline — all read from real data
+$Define reusable interview structures
+XEmail/password sign-in via Supabase Auth, session handling, every non-public route gated
+!Third-party connection management
+Org and workspace settings
+APartial — read-only plan/usage view, no live payment processing
+/assessments
+"Usage transparency, scoped by role

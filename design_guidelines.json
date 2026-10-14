@@ -1,0 +1,285 @@
+{
+  "project_name": "Pivvix",
+  "blueprint_version": "2.0.0-implementation-ready",
+  "blueprint_scope": "Two visually distinct browsable sample homepage previews (Dark Precision vs Light Editorial) for Pivvix corporate marketing site with shared verified product capabilities, sample switcher, and non-transacting Book a Demo modal preview.",
+  "review_status": "APPROVED_BLUEPRINT_SPECIFICATION: Previous unapproved draft replaced and cleaned. Hallucinated production-verified claims, fake metrics/percentages, fake customer logos, fake live integrations, and unconfirmed candidate-side features are completely eliminated. Candidate resume portal is deferred per explicit user instruction. All product showcase data across both concepts is strictly labeled as illustrative mock previews. Primary call to action is standardized as 'Book a demo' with an honest, read-only demo booking dialog.",
+  "user_directives": {
+    "app_type": "marketing_site_two_previews",
+    "target_audience": "Corporate hiring teams, talent leaders, and engineering hiring managers",
+    "deferred_scope": "Candidate-facing resume tools, portals, and applicant tracking accounts deferred (in discussion phase)",
+    "primary_cta": "Book a demo",
+    "interactive_preview_requirement": "Browsable concept switcher allowing stakeholders to evaluate Option A (Dark Precision) and Option B (Light Editorial) side-by-side or individually, with simulated live Nova interview states and evidence scorecard inspector.",
+    "booking_modal_requirement": "Read-only demo booking preview dialog with clear explicit disclaimer stating no booking request or transactional data is transmitted."
+  },
+  "shared_marketing_content_model": {
+    "brand_name": "Pivvix",
+    "core_value_proposition": "Structured, voice-and-video conversational first-round interviews led by Nova — grounding every competency rating in verbatim candidate evidence while leaving the final hiring call to human teams.",
+    "verified_nova_capabilities": [
+      {
+        "id": "conversational_depth",
+        "name": "Adaptive Conversational Probing",
+        "summary": "Adapts follow-ups to candidate answers, asks for elaboration when needed, and advances gracefully after repeated unclear responses."
+      },
+      {
+        "id": "state_transparency",
+        "name": "Live State Transparency & Captions",
+        "summary": "Real-time visual state awareness (Listening, Thinking, Speaking) with persistent, synchronized interview question captions."
+      },
+      {
+        "id": "evidence_scorecard",
+        "name": "Evidence-Linked Competency Scorecard",
+        "summary": "Every score links directly to candidate quotes and identified evidence gaps, supporting a distinct 'Needs Review' state instead of artificial pass/fail binaries."
+      },
+      {
+        "id": "recruiter_pipeline",
+        "name": "Structured Recruiter Pipeline",
+        "summary": "Job-specific knockout screening, candidate stages (Sourced to Offer), reusable talent pools, and shareable hiring reports."
+      }
+    ],
+    "sample_candidate_persona": {
+      "name": "Elena Rostova",
+      "target_role": "Senior Distributed Systems Engineer",
+      "interview_duration": "24m 12s completed",
+      "overall_recommendation": "Needs Review (Senior Bar)",
+      "competency_highlight": {
+        "title": "System Fault Tolerance & Partitioning",
+        "score": "4.2 / 5.0",
+        "status": "Needs Review",
+        "candidate_quote": "\"We segregated our raft consensus into three regional quorum rings. When cross-region latency spiked over 280ms, our lease coordinator degraded writes to local write-ahead logs rather than stalling the client buffer.\"",
+        "justification": "Candidate accurately articulated distributed consensus partitioning and degradation trade-offs under high network partition latency.",
+        "missing_evidence": "Did not detail data reconciliation mechanics after regional partitions heal."
+      }
+    }
+  },
+  "concept_previews": {
+    "concept_a": {
+      "id": "dark-precision",
+      "name": "Option A: Dark Precision (Acoustic Studio & Swiss Telemetry)",
+      "archetype": "Archetype 4 (Swiss & High-Contrast) + Studio Hardware Telemetry",
+      "creative_fusion": [
+        "High-fidelity hardware broadcast monitors & studio decibel VU meters",
+        "Swiss modernist typography with asymmetric data corridors and rigid hairpins",
+        "Tactical command center telemetry with amber acoustic kinetic feedback"
+      ],
+      "emotional_tone": "Authoritative, technical, focused, forensic, high-fidelity",
+      "color_system": {
+        "theme": "dark",
+        "background_primary": "#0A0B0D",
+        "background_secondary": "#111317",
+        "surface_card": "#16191F",
+        "surface_elevated": "#1D212A",
+        "border_subtle": "#252B35",
+        "border_prominent": "#38414E",
+        "text_primary": "#F3F5F7",
+        "text_secondary": "#9CA6B5",
+        "text_muted": "#5B6473",
+        "accent_brand": "#F59E0B",
+        "accent_brand_hover": "#D97706",
+        "state_listening": {
+          "label": "Listening",
+          "color": "#38BDF8",
+          "bg": "rgba(56, 189, 248, 0.12)",
+          "border": "rgba(56, 189, 248, 0.4)"
+        },
+        "state_thinking": {
+          "label": "Thinking",
+          "color": "#FBBF24",
+          "bg": "rgba(251, 191, 36, 0.12)",
+          "border": "rgba(251, 191, 36, 0.4)"
+        },
+        "state_speaking": {
+          "label": "Speaking",
+          "color": "#34D399",
+          "bg": "rgba(52, 211, 153, 0.12)",
+          "border": "rgba(52, 211, 153, 0.4)"
+        }
+      },
+      "typography": {
+        "display_headline": "font-sans font-bold tracking-tight text-white",
+        "subheading": "font-sans font-normal text-slate-300 leading-relaxed",
+        "body": "font-sans text-slate-300",
+        "telemetry_data": "font-mono text-xs tracking-wider text-amber-400 uppercase",
+        "quote_evidence": "font-mono text-sm leading-relaxed text-slate-200 border-l-2 border-amber-500/70 pl-3 bg-amber-500/5 py-2",
+        "scale": {
+          "h1": "text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08]",
+          "h2": "text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-snug",
+          "h3": "text-xl sm:text-2xl font-semibold tracking-tight",
+          "h4": "text-lg sm:text-xl font-medium",
+          "body": "text-base leading-relaxed text-slate-300",
+          "caption": "text-xs font-mono uppercase tracking-[0.2em] text-slate-400"
+        }
+      },
+      "layout_and_spacing": {
+        "header_height": "h-20",
+        "section_vertical_padding": "py-20 lg:py-28",
+        "container_max_width": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+        "hero_grid": "grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center",
+        "hero_left_col": "lg:col-span-6 space-y-6",
+        "hero_right_col": "lg:col-span-6",
+        "feature_bento_grid": "grid grid-cols-1 md:grid-cols-12 gap-6",
+        "surface_padding": "p-6 sm:p-8",
+        "border_radius": "rounded-xl border border-[#252B35]"
+      },
+      "original_product_illustrations": {
+        "hero_interviewer_terminal": {
+          "title": "Nova Acoustic Waveform & HUD Console",
+          "visual_concept": "Vector-drawn studio console with candidate video feed mock viewport, live dynamic audio waveform visualizer (SVG vertical metering bars responding to simulated states), state status badge selector (Listening/Thinking/Speaking), and synchronized real-time question caption bar.",
+          "interactive_hooks": "State toggle chips allowing recruiter to see Nova switch between Blue Listening, Amber Thinking, and Emerald Speaking states, complete with dynamic SVG soundwaves and matching caption text."
+        },
+        "scorecard_inspector_component": {
+          "title": "Forensic Competency Audit Terminal",
+          "visual_concept": "High-density data inspector with 1px graphite grid, split into candidate metadata banner, competency rating gauges, highlighted verbatim transcript citation with timestamp marker [14:28], identified missing evidence box, and final human decision prompt."
+        }
+      },
+      "mobile_adaptations": {
+        "navigation": "Sticky dark header with solid backdrop (bg-[#0A0B0D]/95 backdrop-blur-md) and collapsible hamburger drawer.",
+        "hero_order": "Hero typography stacked first, followed by compact Nova HUD interactive simulator with touch-optimized state switcher.",
+        "grid_collapse": "All 12-column grids collapse cleanly into single-column vertical cards with minimum touch target height 44px."
+      }
+    },
+    "concept_b": {
+      "id": "light-editorial",
+      "name": "Option B: Light Editorial (Warm Atelier & Archival Clarity)",
+      "archetype": "Archetype 1 (Organic & Grounded Trust) + Architectural Monograph",
+      "creative_fusion": [
+        "Swiss architectural monographs and heavyweight archival typography",
+        "Warm sand, unbleached linen, and forest slate tones",
+        "Humanistic court transcript and transparent legal journal layouts"
+      ],
+      "emotional_tone": "Warm, humane, transparent, unhurried, trustworthy, respectful",
+      "color_system": {
+        "theme": "light",
+        "background_primary": "#F7F5F0",
+        "background_secondary": "#EFECE4",
+        "surface_card": "#FFFFFF",
+        "surface_elevated": "#FAF9F5",
+        "border_subtle": "#DDD8CE",
+        "border_prominent": "#BCB5A8",
+        "text_primary": "#1C1E21",
+        "text_secondary": "#575D65",
+        "text_muted": "#7A828E",
+        "accent_brand": "#B45309",
+        "accent_brand_hover": "#92400E",
+        "state_listening": {
+          "label": "Listening",
+          "color": "#0284C7",
+          "bg": "rgba(2, 132, 199, 0.1)",
+          "border": "rgba(2, 132, 199, 0.35)"
+        },
+        "state_thinking": {
+          "label": "Thinking",
+          "color": "#B45309",
+          "bg": "rgba(180, 83, 9, 0.1)",
+          "border": "rgba(180, 83, 9, 0.35)"
+        },
+        "state_speaking": {
+          "label": "Speaking",
+          "color": "#047857",
+          "bg": "rgba(4, 120, 87, 0.1)",
+          "border": "rgba(4, 120, 87, 0.35)"
+        }
+      },
+      "typography": {
+        "display_headline": "font-serif font-normal tracking-tight text-[#1C1E21]",
+        "subheading": "font-sans font-normal text-stone-700 leading-relaxed",
+        "body": "font-sans text-stone-700",
+        "telemetry_data": "font-mono text-xs tracking-wider text-amber-800 uppercase",
+        "quote_evidence": "font-serif italic text-base leading-relaxed text-stone-900 border-l-2 border-stone-800/80 pl-4 bg-stone-100/70 py-2.5",
+        "scale": {
+          "h1": "text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight leading-[1.12]",
+          "h2": "text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight leading-snug",
+          "h3": "text-xl sm:text-2xl font-medium tracking-tight",
+          "h4": "text-lg sm:text-xl font-medium",
+          "body": "text-base leading-relaxed text-stone-700",
+          "caption": "text-xs font-mono uppercase tracking-[0.2em] text-stone-500"
+        }
+      },
+      "layout_and_spacing": {
+        "header_height": "h-20",
+        "section_vertical_padding": "py-20 lg:py-28",
+        "container_max_width": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+        "hero_grid": "grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center",
+        "hero_left_col": "lg:col-span-7 space-y-7",
+        "hero_right_col": "lg:col-span-5",
+        "feature_bento_grid": "grid grid-cols-1 md:grid-cols-12 gap-8",
+        "surface_padding": "p-8 sm:p-10",
+        "border_radius": "rounded-2xl border border-[#DDD8CE] shadow-sm"
+      },
+      "original_product_illustrations": {
+        "hero_interviewer_terminal": {
+          "title": "Nova Conversational Stage Folio",
+          "visual_concept": "Parchment-clean interview folio showing calm candidate portrait framing, tactile hairline audio resonance ribbon, floating archival status pill (Listening in slate sky, Thinking in ochre, Speaking in moss), and prominent legible question caption card.",
+          "interactive_hooks": "Gentle tabbed interview stages allowing recruiter to trigger sample questions on technical architecture, situational trade-offs, and wrap-up courtesies."
+        },
+        "scorecard_inspector_component": {
+          "title": "Archival Evidence Ledger",
+          "visual_concept": "Clean paper-inspired evaluation dossier with serif rubric headers, explicit quote callouts citing candidate Elena Rostova, side-by-side strengths and missing proof indicators, and clear human-in-the-loop validation signature."
+        }
+      },
+      "mobile_adaptations": {
+        "navigation": "Sticky warm-linen header with solid background (bg-[#F7F5F0]/95 backdrop-blur-md) and slide-out navigation sheet.",
+        "hero_order": "Hero story and proof statement on top, flowing naturally into interactive conversational folio.",
+        "typography_readability": "Serif font size stepped down on small screens (text-3xl on mobile, text-5xl on desktop) to preserve balanced line breaking."
+      }
+    }
+  },
+  "interactive_concept_switcher_bar": {
+    "position": "Fixed floating bottom or top-header toggle widget",
+    "design_guideline": "High-contrast switcher bar containing: 'Previewing Direction:', [Option A: Dark Precision] toggle, [Option B: Light Editorial] toggle, plus an info tooltip explaining both concepts share verified marketing capabilities for direct aesthetic comparison.",
+    "state_persistence": "Preserve active preview choice in component state or URL hash (#dark-precision / #light-editorial)."
+  },
+  "book_a_demo_modal_specification": {
+    "trigger": "All primary and header CTAs across both concepts trigger the same Book a Demo preview modal.",
+    "modal_title": "Schedule a Pivvix Product Walkthrough",
+    "modal_subtitle": "Experience Nova live conversational screening and auditable scorecards tailored to your hiring rubrics.",
+    "required_honest_disclaimer": "ILLUSTRATIVE PREVIEW NOTICE: No external calendar service or contact endpoint is connected. This dialog demonstrates the corporate inquiry form and does not transmit data.",
+    "form_fields": [
+      { "id": "full_name", "label": "Full Name", "placeholder": "Sarah Chen", "type": "text" },
+      { "id": "work_email", "label": "Work Email", "placeholder": "schen@company.com", "type": "email" },
+      { "id": "company_name", "label": "Company Name", "placeholder": "Acme Technologies", "type": "text" },
+      { "id": "hiring_volume", "label": "Estimated Monthly First-Round Interviews", "options": ["10 - 50 roles/mo", "50 - 250 roles/mo", "250+ roles/mo"] }
+    ],
+    "action_button": {
+      "label": "Confirm Sample Request",
+      "behavior": "Shows instant confirmation feedback state with dismiss button, reinforcing read-only preview mode."
+    }
+  },
+  "component_architecture_plan": {
+    "preview_shell": "/app/frontend/src/components/marketing/ConceptPreviewShell.js",
+    "switcher_bar": "/app/frontend/src/components/marketing/ConceptSwitcherBar.js",
+    "demo_modal": "/app/frontend/src/components/marketing/BookDemoModal.js",
+    "dark_preview": {
+      "root": "/app/frontend/src/components/marketing/dark/DarkPrecisionHomepage.js",
+      "header": "/app/frontend/src/components/marketing/dark/DarkHeader.js",
+      "hero": "/app/frontend/src/components/marketing/dark/DarkHeroSection.js",
+      "nova_hud": "/app/frontend/src/components/marketing/dark/DarkNovaHudSimulator.js",
+      "scorecard": "/app/frontend/src/components/marketing/dark/DarkScorecardAudit.js",
+      "pipeline_grid": "/app/frontend/src/components/marketing/dark/DarkPipelineGrid.js",
+      "closing_cta": "/app/frontend/src/components/marketing/dark/DarkClosingCta.js",
+      "footer": "/app/frontend/src/components/marketing/dark/DarkFooter.js"
+    },
+    "light_preview": {
+      "root": "/app/frontend/src/components/marketing/light/LightEditorialHomepage.js",
+      "header": "/app/frontend/src/components/marketing/light/LightHeader.js",
+      "hero": "/app/frontend/src/components/marketing/light/LightHeroSection.js",
+      "nova_folio": "/app/frontend/src/components/marketing/light/LightNovaFolio.js",
+      "scorecard": "/app/frontend/src/components/marketing/light/LightScorecardLedger.js",
+      "pipeline_grid": "/app/frontend/src/components/marketing/light/LightPipelineGrid.js",
+      "closing_cta": "/app/frontend/src/components/marketing/light/LightClosingCta.js",
+      "footer": "/app/frontend/src/components/marketing/light/LightFooter.js"
+    }
+  },
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": {
+    "file_extension_rule": "Use .js and .jsx files exclusively. Do not generate .tsx files.",
+    "testing_attributes": "All interactive elements (concept switchers, state tabs, demo modal triggers, form inputs, modal close buttons) MUST have data-testid attributes.",
+    "anti_ai_slop_rules": [
+      "NO generic centered cards with uniform gradients.",
+      "NO robot, brain, or crystal ball emojis (🤖, 🧠, 💡, 🔮).",
+      "NO unverified claims ('100% bias free', 'Production verified', fake 99.4% accuracy stats).",
+      "NO fake client logos or unsupported partner badges (e.g. Workday, Greenhouse, Ashby).",
+      "Headers and overlays must never have fully transparent backgrounds."
+    ],
+    "surface_and_contrast": "Ensure minimum 4.5:1 text contrast for all body and metadata. Never use text-7xl or text-8xl for headings; keep maximum H1 at text-4xl sm:text-5xl lg:text-6xl.",
+    "illustrative_disclaimer": "Both previews must visibly state: 'Interactive Design Concept Preview — Illustrative Product Demonstration'."
+  }
+}
