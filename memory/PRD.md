@@ -1,22 +1,25 @@
 # Pivvix — Product and Website Brief
 
 ## Status
-Two corporate-only marketing homepage design samples are implemented and tested. A third preview, Chromatic Editorial, is being added in response to user feedback: preserve the exact warm off-white background, with richer coordinated colour in the content panels. These remain illustrative frontend previews, not a functional hiring application. The backend is unchanged.
+Three corporate-only marketing homepage design samples are implemented and tested. Chromatic Editorial preserves the exact warm off-white background from Light Editorial, with richer terracotta and deep-blue content panels. The original Dark Precision and Light Editorial previews remain intact. These are illustrative frontend previews, not a functional hiring application. The backend is unchanged.
 
-## Latest approved enhancement
+## Latest completed enhancement (2026-02 session)
 - User likes Light Editorial's background but finds its other fills too stale. Wants colourful boxes/content without too many mixed colours.
 - User selected: "Add it as a third preview to compare with the original light version".
-- Preserve original dark and light previews; add `/preview/chromatic` and three-way comparison controls.
-- Keep page background #f7f6f0. New surfaces use two coordinated accents, terracotta and deep blue, with tints; no rainbow or additional green/yellow accent families.
-- Test third-preview interactions, responsive three-way dock, and regression of original two concepts before completion.
+- Added `/preview/chromatic`, three-way comparison controls, and design notes for all three concepts.
+- Preserved page background #f7f6f0. Content surfaces use two coordinated accents, terracotta and deep blue, with tints; no rainbow or additional green/yellow accent families.
+- Saturated blue Nova panel with peach frame and cream caption; colour-filled scorecard/header/evidence; pale-blue gap state; blue/peach workflow cards; deep-blue closing banner.
+- CSS is scoped to .theme-chromatic. Shared changes only to three-way comparison/notes and ProductPreviews.jsx data-evidence attribute; no API or backend changes.
+- Build compiled successfully. `/app/test_reports/iteration_3.json` passed: routes/history, matching backgrounds, responsive dock at 320/390/640/768/900/1024/1440/1920px, Nova controls, evidence states, dialogs, mobile menu, original concept regression. No console errors, duplicate IDs, or overflow.
+- Awaiting user feedback on the third direction; do not select a final design without user approval.
 
 ## Confirmed decisions and current task
 - Initial deliverable: polished marketing website for the existing product.
 - Corporate audience ONLY. User: "leave candidate side for now, we will add it later if needed. as it is still in discussion phase".
 - Primary CTA: Book a demo.
-- Visual direction unresolved. User approved two sample previews: "create 2 sample previews and if needed we can make mix of that".
-- Current task: build and test Dark Precision and Light Editorial browsable homepage samples, with possible hybrid AFTER feedback. No live booking/AI/auth/integrations requested.
-- Routes: `/` and `/preview/dark` (dark); `/preview/light` (light). Fixed bottom comparison switcher.
+- Visual direction unresolved. User approved a third richer-colour sample while preserving both originals.
+- Current task complete: Dark Precision, Light Editorial and Chromatic Editorial browsable samples. Awaiting visual feedback. No live booking/AI/auth/integrations requested.
+- Routes: `/` and `/preview/dark` (dark); `/preview/light` (original light); `/preview/chromatic` (colourful light). Fixed bottom three-way comparison switcher.
 - Shared corporate copy, Nova state sample, evidence scorecard inspector, workflow, closing CTA. Responsive mobile menu. Informational booking/design-notes dialogs; no data collected or submitted.
 - Main files: frontend/src/App.js, App.css, components/marketing/PreviewSections.jsx, components/marketing/ProductPreviews.jsx.
 - Sample interview/scorecard interactions are MOCKED, explicitly labeled illustrative. Book a demo is a read-only preview dialog, not a real scheduling integration.
@@ -27,7 +30,7 @@ Build a website for an AI hiring startup serving corporate hiring teams and cand
 
 User's explicit instruction: "ask me questions as a web designer so that it will be easier for you to build I will also provide you our tools features and information from which you can take reference. The document also explains how the website should be and all, just ignore those things and just take reference for tool features".
 
-Latest user message: "create 2 sample previews and if needed we can make mix of that". Completed and tested; awaiting visual feedback.
+Latest user choice: "Add it as a third preview to compare with the original light version". Third preview completed and tested; awaiting visual feedback.
 
 Language: English.
 
@@ -100,7 +103,7 @@ Language: English.
 
 ## Prioritized next steps
 ### P0 — Await user visual feedback
-- User compares Dark Precision and Light Editorial via the bottom switcher.
+- User compares Chromatic Editorial with the original Dark Precision and Light Editorial via the three-way bottom switcher.
 - Ask which typography, palette, layout, or product visuals they prefer, only when feedback arrives.
 - If requested, make a hybrid of selected elements; do not arbitrarily select a final direction.
 
