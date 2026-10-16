@@ -258,17 +258,31 @@ export const CaseStudy = ({ children, author, role, company, initials, avatarCla
   </section>
 );
 
-/* ---------- Trust strip ---------- */
+/* ---------- Trust strip — monochrome scrolling logos ---------- */
+const LOGOS = [
+  { n: "InnovateTech", m: (<svg viewBox="0 0 24 24" fill="none"><path d="M3 20L12 4l9 16" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" /><path d="M8.5 14h7" stroke="currentColor" strokeWidth="1.6" /></svg>) },
+  { n: "GlobalWorks", m: (<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" /><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" stroke="currentColor" strokeWidth="1.2" /></svg>) },
+  { n: "SparkLabs", m: (<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" strokeWidth="1.6" /><path d="M13 7l-4 7h3l-1 4 4-7h-3l1-4z" fill="currentColor" /></svg>) },
+  { n: "Nimbus", m: (<svg viewBox="0 0 24 24" fill="none"><path d="M7 17a4 4 0 010-8 5 5 0 019.6-1 4 4 0 01.4 8 M7 17h10" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" /></svg>) },
+  { n: "Core Systems", m: (<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" /><circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.4" /></svg>) },
+  { n: "Northwind", m: (<svg viewBox="0 0 24 24" fill="none"><path d="M12 3v6M12 21v-6M3 12h6M21 12h-6M6 6l4 4M18 18l-4-4M6 18l4-4M18 6l-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" /></svg>) },
+  { n: "Lumen", m: (<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.6" /><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" /></svg>) },
+  { n: "Vertex", m: (<svg viewBox="0 0 24 24" fill="none"><path d="M3 7l9-4 9 4M3 7l9 5 9-5M3 7v10l9 4 9-4V7" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" /></svg>) },
+  { n: "Harbor", m: (<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" /><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.4" /><circle cx="12" cy="12" r="1.2" fill="currentColor" /></svg>) },
+  { n: "Prism", m: (<svg viewBox="0 0 24 24" fill="none"><path d="M4 20L12 4l8 16H4z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" /><path d="M12 4v16M8 12h8" stroke="currentColor" strokeWidth="1.2" /></svg>) },
+];
+
 export const TrustStrip = () => (
-  <section className="pv-trust pv-container" aria-label="Trusted by">
-    <div className="pv-trust-head">Trusted by teams building what's next</div>
-    <div className="pv-trust-row">
-      {["InnovateTech", "GlobalWorks", "SparkLabs", "Nimbus", "Core Systems"].map((n) => (
-        <span key={n} className="pv-trust-logo">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12l4 4 12-12" stroke="currentColor" strokeWidth="2" /></svg>
-          {n}
-        </span>
-      ))}
+  <section className="pv-trust" aria-label="Trusted by">
+    <div className="pv-container">
+      <div className="pv-trust-head">Trusted by teams building what's next</div>
+    </div>
+    <div className="pv-trust-marquee" aria-hidden="true">
+      <div className="pv-trust-track" data-testid="pv-trust-track">
+        {[...LOGOS, ...LOGOS].map((l, i) => (
+          <span key={`${l.n}-${i}`} className="pv-trust-logo">{l.m}{l.n}</span>
+        ))}
+      </div>
     </div>
   </section>
 );
