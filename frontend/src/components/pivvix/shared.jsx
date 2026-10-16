@@ -94,7 +94,8 @@ export const SharedFooter = ({ onDemo }) => (
             <li><a href="/platform">Overview</a></li>
             <li><a href="/platform#lifecycle">Hiring lifecycle</a></li>
             <li><a href="/platform#ai">AI interview</a></li>
-            <li><a href="/platform#benefits">Benefits</a></li>
+            <li><a href="/platform#compare">Comparison</a></li>
+            <li><a href="/pricing">Pricing</a></li>
           </ul>
         </div>
         <div className="pv-footer-col">

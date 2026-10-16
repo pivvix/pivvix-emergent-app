@@ -16,14 +16,17 @@ export const SharedHeader = ({ active = "platform", onDemo }) => (
         PIVVIX
       </a>
       <nav className="pv-nav" aria-label="Primary">
-        <a href="#platform" className={active === "platform" ? "active" : ""} data-testid="pv-nav-platform">
+        <a href="/platform" className={active === "platform" ? "active" : ""} data-testid="pv-nav-platform">
           Platform <ChevronDown size={11} />
         </a>
-        <a href="#solutions" className={active === "solutions" ? "active" : ""} data-testid="pv-nav-solutions">
+        <a href="/solutions" className={active === "solutions" ? "active" : ""} data-testid="pv-nav-solutions">
           Solutions <ChevronDown size={11} />
         </a>
-        <a href="#resources" className={active === "resources" ? "active" : ""} data-testid="pv-nav-resources">
+        <a href="/resources" className={active === "resources" ? "active" : ""} data-testid="pv-nav-resources">
           Resources
+        </a>
+        <a href="/pricing" className={active === "pricing" ? "active" : ""} data-testid="pv-nav-pricing">
+          Pricing
         </a>
       </nav>
       <a href="#signin" className="pv-signin" data-testid="pv-signin">Sign in</a>

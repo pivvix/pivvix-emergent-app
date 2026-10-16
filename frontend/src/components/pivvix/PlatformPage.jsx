@@ -450,6 +450,90 @@ const PlatformBenefits = () => (
   </section>
 );
 
+/* ======================== Candidate Comparison ======================== */
+const comparisonRows = [
+  { label: "Overall match", a: { score: "92%", bar: 92, color: "#7FA89C" }, b: { score: "87%", bar: 87, color: "#7FA89C" } },
+  { label: "Problem Solving", a: { score: "4 / 5", bar: 80, color: "#FF6B5B" }, b: { score: "4 / 5", bar: 80, color: "#FF6B5B" },
+    qa: '"I split the system into an event producer, a message queue, and a worker service — then measured latency at each hop."', qt: "04:32",
+    qb: '"I\'d normalise the schema first, add indexes, then look at caching the hot read paths before scaling horizontally."', qbt: "06:18" },
+  { label: "System Design", a: { score: "4 / 5", bar: 80, color: "#FF6B5B" }, b: { score: "3 / 5", bar: 60, color: "#A9CBB9" },
+    qa: '"At scale, the message queue avoids tightly coupling producers to workers — we can scale workers independently."', qt: "08:14",
+    qb: '"I\'d probably start with a monolith and extract services only when the pain is clear."', qbt: "09:02" },
+  { label: "Communication", a: { score: "3 / 5", bar: 60, color: "#A9CBB9" }, b: { score: "4 / 5", bar: 80, color: "#FF6B5B" },
+    qa: '"The main trade-off is complexity versus latency — but I\'d want data from a load test before deciding."', qt: "11:07",
+    qb: '"I usually sketch the shape first and then walk through two or three failure modes with the team."', qbt: "11:52" },
+];
+
+const Comparison = () => (
+  <section className="pv-section cream" aria-labelledby="pv-cmp-heading" id="compare">
+    <div className="pv-container">
+      <div className="pv-benefits-head pv-reveal" style={{ margin: "0 0 44px" }}>
+        <span className="pv-eyebrow">Candidate comparison</span>
+        <h2 className="pv-h2" id="pv-cmp-heading">Compare candidates,<br /><em>side by side.</em></h2>
+        <p className="pv-lead" style={{ textAlign: "center" }}>
+          Line up scores and the evidence behind them. Your hiring team can see where each
+          candidate is strong — and why — in a single glance.
+        </p>
+      </div>
+      <div className="pv-compare pv-reveal" data-testid="pv-compare">
+        <div className="pv-compare-controls">
+          <strong>Senior Software Engineer</strong>
+          <span>· 2 of 9 strong matches</span>
+          <span className="pv-tag">Sample data</span>
+        </div>
+        <div className="pv-compare-grid">
+          {/* Header row */}
+          <div className="pv-compare-cell header label">Candidate</div>
+          <div className="pv-compare-cell header">
+            <div className="pv-compare-header-inner">
+              <span className="pv-avatar a1">AS</span>
+              <div><strong>Aarav Sharma</strong><span>7 yrs · Backend · Bengaluru</span></div>
+            </div>
+            <span className="pv-compare-header-pct">Overall match <strong>92%</strong></span>
+          </div>
+          <div className="pv-compare-cell header">
+            <div className="pv-compare-header-inner">
+              <span className="pv-avatar a2">NP</span>
+              <div><strong>Neha Patel</strong><span>6 yrs · Full-stack · Remote</span></div>
+            </div>
+            <span className="pv-compare-header-pct">Overall match <strong>87%</strong></span>
+          </div>
+
+          {comparisonRows.slice(1).map((row) => (
+            <div key={row.label} style={{ display: "contents" }}>
+              <div className="pv-compare-cell label">{row.label}</div>
+              <div className="pv-compare-cell">
+                <div className="pv-compare-score"><strong>{row.a.score}</strong><em>Score</em></div>
+                <div className="pv-compare-bar"><i style={{ width: `${row.a.bar}%`, background: row.a.color }} /></div>
+                {row.qa && (
+                  <div className="pv-compare-quote">
+                    {row.qa}
+                    <span className="pv-compare-quote-time">▶ {row.qt}</span>
+                  </div>
+                )}
+              </div>
+              <div className="pv-compare-cell">
+                <div className="pv-compare-score"><strong>{row.b.score}</strong><em>Score</em></div>
+                <div className="pv-compare-bar"><i style={{ width: `${row.b.bar}%`, background: row.b.color }} /></div>
+                {row.qb && (
+                  <div className="pv-compare-quote">
+                    {row.qb}
+                    <span className="pv-compare-quote-time">▶ {row.qbt}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="pv-compare-foot">
+          <span>Every quote links back to the transcript, with full context for your hiring team.</span>
+          <strong>AI informs. People decide.</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 /* ======================== Page ======================== */
 export default function PlatformPage() {
   useReveal();
@@ -463,6 +547,7 @@ export default function PlatformPage() {
         <TrustStrip />
         <Lifecycle />
         <AIDeepDive />
+        <Comparison />
         <PlatformBenefits />
         <CTABand heading="Ready to see the" headingEm="full platform?" lead="See how Pivvix connects every stage of hiring — from first conversation to final decision." onDemo={openDemo} />
       </main>
