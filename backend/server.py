@@ -1,12 +1,12 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from pydantic import BaseModel, Field, ConfigDict, EmailStr
+from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 
@@ -65,6 +65,43 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+
+# ---------- Demo requests ----------
+class DemoRequestCreate(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    name: str = Field(min_length=1, max_length=120)
+    email: EmailStr
+    company: str = Field(min_length=1, max_length=200)
+    team_size: Optional[str] = Field(default=None, max_length=40)
+    message: Optional[str] = Field(default=None, max_length=4000)
+
+
+class DemoRequest(DemoRequestCreate):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+
+@api_router.post("/demo-requests", response_model=DemoRequest)
+async def create_demo_request(payload: DemoRequestCreate):
+    try:
+        obj = DemoRequest(**payload.model_dump())
+        doc = obj.model_dump()
+        doc["created_at"] = doc["created_at"].isoformat()
+        await db.demo_requests.insert_one(doc)
+        return obj
+    except Exception as exc:
+        logger.exception("demo-requests failed: %s", exc)
+        raise HTTPException(status_code=500, detail="Could not save demo request")
+
+
+@api_router.get("/demo-requests", response_model=List[DemoRequest])
+async def list_demo_requests():
+    docs = await db.demo_requests.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
+    for d in docs:
+        if isinstance(d.get("created_at"), str):
+            d["created_at"] = datetime.fromisoformat(d["created_at"])
+    return docs
 
 # Include the router in the main app
 app.include_router(api_router)

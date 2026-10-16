@@ -7,6 +7,9 @@ import { Hero, EvidenceSection, Workflow, ClosingSection } from "@/components/ma
 import "@/App.css";
 
 const PlatformSample = lazy(() => import("@/components/pivvix/PlatformSample"));
+const PlatformPage = lazy(() => import("@/components/pivvix/PlatformPage"));
+const SolutionsPage = lazy(() => import("@/components/pivvix/SolutionsPage"));
+const ResourcesPage = lazy(() => import("@/components/pivvix/ResourcesPage"));
 
 const CONCEPTS = [
   { id: "dark", number: "01", name: "Dark Precision", description: "Graphite, warm amber, bold typography. An interview studio with a technical, focused character." },
@@ -78,5 +81,5 @@ function ConceptPage({ concept }) {
 }
 
 export default function App() {
-  return <BrowserRouter><Suspense fallback={null}><Routes><Route path="/" element={<ConceptPage key="dark-home" concept="dark" />} />{CONCEPTS.map(({ id }) => <Route key={id} path={`/preview/${id}`} element={<ConceptPage key={id} concept={id} />} />)}<Route path="/sample" element={<PlatformSample />} /><Route path="*" element={<Navigate to="/" replace />} /></Routes></Suspense></BrowserRouter>;
+  return <BrowserRouter><Suspense fallback={null}><Routes><Route path="/" element={<Navigate to="/platform" replace />} /><Route path="/platform" element={<PlatformPage />} /><Route path="/solutions" element={<SolutionsPage />} /><Route path="/resources" element={<ResourcesPage />} />{CONCEPTS.map(({ id }) => <Route key={id} path={`/preview/${id}`} element={<ConceptPage key={id} concept={id} />} />)}<Route path="/sample" element={<PlatformSample />} /><Route path="*" element={<Navigate to="/platform" replace />} /></Routes></Suspense></BrowserRouter>;
 }
