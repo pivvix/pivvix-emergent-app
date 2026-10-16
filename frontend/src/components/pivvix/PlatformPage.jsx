@@ -1,50 +1,88 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowUpRight, Play, Check, Search, Send, Filter, CalendarDays, AudioLines,
   ClipboardCheck, CheckCircle2, Sparkles, Target, Gauge, Users2, FileCheck2,
   Home, LayoutGrid, MessageSquare, BarChart3, Settings, Volume2, Shield,
-  Scale, Layers,
+  Scale, Mail, ThumbsUp, ArrowRight,
 } from "lucide-react";
 import { SharedHeader } from "./SharedHeader";
 import { SharedFooter, DemoDialog, NovaAbstract, useReveal, CTABand, TrustStrip } from "./shared";
 import { useDemo } from "./useDemo";
 import "./pivvix.css";
 
+/* ======================== Count-up helpers ======================== */
+const useInView = (threshold = 0.3) => {
+  const ref = useRef(null);
+  const [seen, setSeen] = useState(false);
+  useEffect(() => {
+    if (!ref.current || seen) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setSeen(true); io.disconnect(); }
+    }, { threshold });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [threshold, seen]);
+  return [ref, seen];
+};
+
+const CountUp = ({ to, duration = 1400, start }) => {
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    if (!start) return;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) { setVal(to); return; }
+    const t0 = performance.now();
+    let raf;
+    const tick = (now) => {
+      const p = Math.min(1, (now - t0) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setVal(Math.round(eased * to));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [to, duration, start]);
+  return <>{val}</>;
+};
+
 /* ======================== Hero + pipeline card ======================== */
-const PipelineCard = () => (
-  <div className="pv-pipeline pv-reveal" data-testid="pv-pipeline">
-    <div className="pv-pipeline-head">
-      <h3>Senior Software Engineer</h3>
-      <span className="pv-status"><i />Live pipeline</span>
-    </div>
-    <div className="pv-funnel">
-      <div className="pv-funnel-step"><strong>124</strong><span>Applied</span></div>
-      <div className="pv-funnel-step"><strong>42</strong><span>Qualified</span></div>
-      <div className="pv-funnel-step"><strong>18</strong><span>Interviewed</span></div>
-      <div className="pv-funnel-step"><strong>9</strong><span>Strong match</span></div>
-    </div>
-    <div className="pv-candidates">
-      {[
-        { i: "AS", n: "Aarav Sharma", r: "7 yrs · Backend · Bengaluru", m: 92, c: "#7FA89C", a: "a1" },
-        { i: "NP", n: "Neha Patel", r: "6 yrs · Full-stack · Remote", m: 87, c: "#7FA89C", a: "a2" },
-        { i: "RM", n: "Rohan Mehta", r: "5 yrs · Platform · Pune", m: 82, c: "#A9CBB9", a: "a3" },
-        { i: "PN", n: "Priya Nair", r: "8 yrs · Infra · Hyderabad", m: 78, c: "#A9CBB9", a: "a4" },
-      ].map((c) => (
-        <div className="pv-candidate" key={c.i} data-testid={`pv-cand-${c.i}`}>
-          <span className={`pv-avatar ${c.a}`}>{c.i}</span>
-          <div>
-            <div className="pv-candidate-name">{c.n}</div>
-            <div className="pv-candidate-role">{c.r}</div>
+const PipelineCard = () => {
+  const [ref, inView] = useInView(0.3);
+  return (
+    <div className="pv-pipeline pv-reveal" data-testid="pv-pipeline" ref={ref}>
+      <div className="pv-pipeline-head">
+        <h3>Senior Software Engineer</h3>
+        <span className="pv-status"><i />Live pipeline</span>
+      </div>
+      <div className="pv-funnel">
+        <div className="pv-funnel-step"><strong><CountUp to={124} start={inView} /></strong><span>Applied</span></div>
+        <div className="pv-funnel-step"><strong><CountUp to={42} start={inView} /></strong><span>Qualified</span></div>
+        <div className="pv-funnel-step"><strong><CountUp to={18} start={inView} /></strong><span>Interviewed</span></div>
+        <div className="pv-funnel-step"><strong><CountUp to={9} start={inView} /></strong><span>Strong match</span></div>
+      </div>
+      <div className="pv-candidates">
+        {[
+          { i: "AS", n: "Aarav Sharma", r: "7 yrs · Backend · Bengaluru", m: 92, c: "#7FA89C", a: "a1" },
+          { i: "NP", n: "Neha Patel", r: "6 yrs · Full-stack · Remote", m: 87, c: "#7FA89C", a: "a2" },
+          { i: "RM", n: "Rohan Mehta", r: "5 yrs · Platform · Pune", m: 82, c: "#A9CBB9", a: "a3" },
+          { i: "PN", n: "Priya Nair", r: "8 yrs · Infra · Hyderabad", m: 78, c: "#A9CBB9", a: "a4" },
+        ].map((c) => (
+          <div className="pv-candidate" key={c.i} data-testid={`pv-cand-${c.i}`}>
+            <span className={`pv-avatar ${c.a}`}>{c.i}</span>
+            <div>
+              <div className="pv-candidate-name">{c.n}</div>
+              <div className="pv-candidate-role">{c.r}</div>
+            </div>
+            <div className="pv-match">
+              <span className="pv-match-bar"><i style={{ width: `${c.m}%`, background: c.c }} /></span>
+              <strong><CountUp to={c.m} start={inView} />%</strong>
+            </div>
           </div>
-          <div className="pv-match">
-            <span className="pv-match-bar"><i style={{ width: `${c.m}%`, background: c.c }} /></span>
-            <strong>{c.m}%</strong>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const PlatformHero = ({ openDemo }) => (
   <section className="pv-section cream pv-hero" aria-labelledby="pv-hero-heading" id="top">
@@ -77,45 +115,231 @@ const PlatformHero = ({ openDemo }) => (
   </section>
 );
 
-/* ======================== Lifecycle ======================== */
-const stages = [
-  { n: "01", t: "Sourcing", d: "Find the right candidates across channels.", Icon: Search },
-  { n: "02", t: "Outreach", d: "Engage with personalised communication.", Icon: Send },
-  { n: "03", t: "Screening", d: "Identify and shortlist strong signals.", Icon: Filter },
-  { n: "04", t: "Scheduling", d: "Coordinate interviews without back-and-forth.", Icon: CalendarDays },
-  { n: "05", t: "AI Interview", d: "Run adaptive, role-specific conversations.", Icon: AudioLines, active: true },
-  { n: "06", t: "Evaluation", d: "Review scorecards and evidence.", Icon: ClipboardCheck },
-  { n: "07", t: "Decide", d: "Move forward with confidence.", Icon: CheckCircle2 },
-];
+/* ======================== Interactive Lifecycle ======================== */
 
-const Lifecycle = () => (
-  <section className="pv-section cream-2" aria-labelledby="pv-lifecycle-heading" id="lifecycle">
-    <div className="pv-container">
-      <div className="pv-lifecycle-head pv-reveal">
-        <div>
-          <span className="pv-eyebrow">The hiring lifecycle</span>
-          <h2 className="pv-h2" id="pv-lifecycle-heading" style={{ marginTop: 20 }}>
-            Seven connected stages.<br /><em>One intelligent platform.</em>
-          </h2>
+const SourcingMock = () => (
+  <div className="pv-mini">
+    <div className="pv-mini-head"><strong>Candidate sources</strong><span className="pv-mini-badge">124 FOUND</span></div>
+    {[
+      { i: "AS", n: "Aarav Sharma", r: "Backend · 7y", c: "linkedin", t: "LinkedIn", a: "a1" },
+      { i: "NP", n: "Neha Patel", r: "Full-stack · 6y", c: "referral", t: "Referral", a: "a2" },
+      { i: "RM", n: "Rohan Mehta", r: "Platform · 5y", c: "direct", t: "Direct apply", a: "a3" },
+    ].map((x) => (
+      <div className="pv-mini-row" key={x.i}>
+        <div className="pv-mini-row-l">
+          <span className={`pv-avatar ${x.a}`}>{x.i}</span>
+          <div><strong>{x.n}</strong><span>{x.r}</span></div>
         </div>
-        <p className="pv-lead">
-          Each stage is designed to work together, so your team gets a consistent,
-          evidence-backed hiring process end-to-end.
-        </p>
+        <span className={`pv-mini-chip ${x.c}`}>{x.t}</span>
       </div>
-      <div className="pv-stages pv-reveal">
-        {stages.map(({ n, t, d, Icon, active }) => (
-          <article key={n} className={`pv-stage ${active ? "active" : ""}`} data-testid={`pv-stage-${n}`}>
-            <span className="pv-stage-num">{n}</span>
-            <span className="pv-stage-icon"><Icon /></span>
-            <h4>{t}</h4>
-            <p>{d}</p>
-          </article>
-        ))}
+    ))}
+  </div>
+);
+
+const OutreachMock = () => (
+  <div className="pv-mini">
+    <div className="pv-mini-head"><strong>Outreach draft</strong><span className="pv-mini-badge">42 QUALIFIED</span></div>
+    <div className="pv-compose">
+      <div className="pv-compose-field"><span>To</span><strong>42 qualified candidates</strong></div>
+      <div className="pv-compose-field"><span>Subject</span><strong>Senior Software Engineer — would love to chat</strong></div>
+      <p className="pv-compose-body">Hi {"{{first_name}}"}, I came across your profile and your work on {"{{project}}"} caught my eye. We're hiring for a Senior SWE role and I'd love to tell you more…</p>
+      <div className="pv-compose-foot">
+        <span style={{ fontSize: 11, color: "var(--pv-ink-muted)" }}>Personalised per candidate</span>
+        <button className="pv-compose-send" type="button"><Send size={11} /> Send 42</button>
       </div>
     </div>
-  </section>
+  </div>
 );
+
+const ScreeningMock = () => (
+  <div className="pv-mini">
+    <div className="pv-mini-head"><strong>Screening responses</strong><span className="pv-mini-badge">18 OF 42</span></div>
+    {[
+      { q: "Years of production backend experience?", r: "pass", t: "Pass" },
+      { q: "Comfortable with on-call rotations?", r: "pass", t: "Pass" },
+      { q: "Describe a recent system-design decision.", r: "review", t: "Review" },
+    ].map((x, i) => (
+      <div className="pv-mini-row" key={i}>
+        <div className="pv-mini-row-l" style={{ gap: 8 }}>
+          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "var(--pv-ink-muted)", width: 20 }}>Q{i + 1}</span>
+          <div><strong style={{ fontSize: 11.5 }}>{x.q}</strong></div>
+        </div>
+        <span className={`pv-mini-chip ${x.r}`}>{x.t}</span>
+      </div>
+    ))}
+  </div>
+);
+
+const SchedulingMock = () => (
+  <div className="pv-mini">
+    <div className="pv-mini-head"><strong>Interview slots · This week</strong><span className="pv-mini-badge">18 BOOKED</span></div>
+    <div className="pv-cal">
+      {[
+        { d: "MON", slots: [{ t: "10:00", s: "booked" }, { t: "14:00", s: "" }] },
+        { d: "TUE", slots: [{ t: "11:00", s: "selected" }, { t: "15:30", s: "" }] },
+        { d: "WED", slots: [{ t: "09:30", s: "" }, { t: "16:00", s: "booked" }] },
+        { d: "THU", slots: [{ t: "10:30", s: "" }, { t: "14:30", s: "" }] },
+        { d: "FRI", slots: [{ t: "11:30", s: "booked" }, { t: "15:00", s: "" }] },
+      ].map((c) => (
+        <div className="pv-cal-col" key={c.d}>
+          <span className="pv-cal-day">{c.d}</span>
+          {c.slots.map((s, i) => (
+            <span key={i} className={`pv-cal-slot ${s.s}`}>{s.t}</span>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const InterviewMock = () => (
+  <div className="pv-mini-nova">
+    <NovaAbstract />
+    <span className="pv-mini-nova-label"><i />Nova is interviewing · 04:32</span>
+  </div>
+);
+
+const EvaluationMock = () => (
+  <div className="pv-mini">
+    <div className="pv-mini-head"><strong>Scorecard · Aarav Sharma</strong><span className="pv-mini-badge">4/5</span></div>
+    {[
+      { h: "Problem Solving", s: "4 / 5", w: 80 },
+      { h: "System Design", s: "4 / 5", w: 80 },
+      { h: "Collaboration", s: "3 / 5", w: 60 },
+    ].map((x) => (
+      <div className="pv-eval-row" key={x.h}>
+        <div className="pv-eval-head"><strong>{x.h}</strong><em>{x.s}</em></div>
+        <div className="pv-eval-bar"><i style={{ width: `${x.w}%` }} /></div>
+      </div>
+    ))}
+    <p className="pv-eval-ev">"I would split the system into an event producer, a message queue, and a worker service…"</p>
+  </div>
+);
+
+const DecideMock = () => (
+  <div className="pv-decide-card">
+    <div className="pv-decide-top">
+      <span className="pv-avatar a1">AS</span>
+      <div><strong>Aarav Sharma</strong><span>Senior Software Engineer · 1 of 9 strong matches</span></div>
+    </div>
+    <div className="pv-decide-score">
+      <span>Overall match</span>
+      <strong>92%</strong>
+    </div>
+    <div className="pv-decide-actions">
+      <button type="button"><ArrowRight /> Keep in pipeline</button>
+      <button type="button" className="primary"><ThumbsUp /> Move to offer</button>
+    </div>
+  </div>
+);
+
+const stages = [
+  { n: "01", t: "Sourcing", d: "Find the right candidates across channels.", Icon: Search,
+    preview: {
+      title: <>Reach the right candidates, <em>everywhere.</em></>,
+      desc: "Pull from LinkedIn, referrals, direct applications, and your talent pool into a single structured source list.",
+      bullets: ["Candidate discovery across every channel", "Source-level attribution and quality signals", "One structured candidate record"],
+      Mock: SourcingMock,
+    }},
+  { n: "02", t: "Outreach", d: "Engage with personalised communication.", Icon: Send,
+    preview: {
+      title: <>Personalised outreach <em>at scale.</em></>,
+      desc: "Draft once, personalise per candidate. Send consistent, warm messages that respect each candidate's context.",
+      bullets: ["Personalised per candidate", "Templates with context awareness", "Response tracking and follow-ups"],
+      Mock: OutreachMock,
+    }},
+  { n: "03", t: "Screening", d: "Identify and shortlist strong signals.", Icon: Filter,
+    preview: {
+      title: <>Screen for signal, <em>not noise.</em></>,
+      desc: "Role-specific screening questions surface the candidates worth investing a full interview in — automatically.",
+      bullets: ["Role-specific screening questionnaires", "Auto-flagged responses for review", "Shortlist with reasoning"],
+      Mock: ScreeningMock,
+    }},
+  { n: "04", t: "Scheduling", d: "Coordinate interviews without back-and-forth.", Icon: CalendarDays,
+    preview: {
+      title: <>Scheduling without the <em>back-and-forth.</em></>,
+      desc: "Candidates pick a slot that works. Your team's calendars stay in sync. No email chains, no missed replies.",
+      bullets: ["Candidate self-serve booking", "Calendar sync across your team", "Automated reminders"],
+      Mock: SchedulingMock,
+    }},
+  { n: "05", t: "AI Interview", d: "Run adaptive, role-specific conversations.", Icon: AudioLines,
+    preview: {
+      title: <>Adaptive AI interviews. <em>Clearer evidence.</em></>,
+      desc: "Nova runs a structured, role-specific conversation that follows up on each answer — producing evidence, not opinions.",
+      bullets: ["Adaptive, role-specific questions", "Real-time evaluation with reasoning", "Full transcript + candidate quotes"],
+      Mock: InterviewMock,
+    }},
+  { n: "06", t: "Evaluation", d: "Review scorecards and evidence.", Icon: ClipboardCheck,
+    preview: {
+      title: <>Review the <em>evidence</em> behind every score.</>,
+      desc: "Each competency score is linked back to the candidate's own words — so your team reviews the reasoning, not the AI.",
+      bullets: ["Competency-level reasoning", "Evidence quotes with timestamps", "Side-by-side candidate comparison"],
+      Mock: EvaluationMock,
+    }},
+  { n: "07", t: "Decide", d: "Move forward with confidence.", Icon: CheckCircle2,
+    preview: {
+      title: <>Move forward with <em>confidence.</em></>,
+      desc: "Hiring teams decide, backed by consistent evidence. Pivvix helps you move forward — the final call stays with your people.",
+      bullets: ["Hiring team collaboration", "Decision log with reasoning", "Audit trail for every hire"],
+      Mock: DecideMock,
+    }},
+];
+
+const Lifecycle = () => {
+  const [active, setActive] = useState("05");
+  const stage = stages.find((s) => s.n === active);
+  const { Mock } = stage.preview;
+  return (
+    <section className="pv-section cream-2" aria-labelledby="pv-lifecycle-heading" id="lifecycle">
+      <div className="pv-container">
+        <div className="pv-lifecycle-head pv-reveal">
+          <div>
+            <span className="pv-eyebrow">The hiring lifecycle</span>
+            <h2 className="pv-h2" id="pv-lifecycle-heading" style={{ marginTop: 20 }}>
+              Seven connected stages.<br /><em>One intelligent platform.</em>
+            </h2>
+          </div>
+          <p className="pv-lead">
+            Click any stage to explore it. Each one is designed to work together,
+            so your team gets a consistent, evidence-backed process end-to-end.
+          </p>
+        </div>
+        <div className="pv-stages pv-reveal" role="tablist" aria-label="Hiring lifecycle stages">
+          {stages.map(({ n, t, d, Icon }) => (
+            <button
+              key={n}
+              type="button"
+              role="tab"
+              aria-selected={active === n}
+              aria-controls="pv-lifecycle-preview"
+              className={`pv-stage ${active === n ? "active" : ""}`}
+              onClick={() => setActive(n)}
+              data-testid={`pv-stage-${n}`}
+            >
+              <span className="pv-stage-num">{n}</span>
+              <span className="pv-stage-icon"><Icon /></span>
+              <h4>{t}</h4>
+              <p>{d}</p>
+            </button>
+          ))}
+        </div>
+        <div className="pv-prev pv-reveal" id="pv-lifecycle-preview" role="tabpanel" aria-live="polite" data-testid={`pv-prev-${active}`}>
+          <div className="pv-prev-copy" key={`copy-${active}`} style={{ animation: "pv-prev-swap .5s cubic-bezier(0.2,0.8,0.2,1)" }}>
+            <span className="pv-tag">{stage.n} / {stage.t}</span>
+            <h3>{stage.preview.title}</h3>
+            <p>{stage.preview.desc}</p>
+            <ul>
+              {stage.preview.bullets.map((b, i) => <li key={i}><Check /> {b}</li>)}
+            </ul>
+          </div>
+          <div className="pv-prev-mock" key={`mock-${active}`}>
+            <Mock />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 /* ======================== AI Interview deep dive ======================== */
 const AIFeature = ({ Icon, title, desc }) => (
