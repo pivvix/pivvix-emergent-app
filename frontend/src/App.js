@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { BrowserRouter, Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { ArrowUpRight, CalendarDays, Check, Layers2, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { Hero, EvidenceSection, Workflow, ClosingSection } from "@/components/marketing/PreviewSections";
 import "@/App.css";
+
+const PlatformSample = lazy(() => import("@/components/pivvix/PlatformSample"));
 
 const CONCEPTS = [
   { id: "dark", number: "01", name: "Dark Precision", description: "Graphite, warm amber, bold typography. An interview studio with a technical, focused character." },
@@ -76,5 +78,5 @@ function ConceptPage({ concept }) {
 }
 
 export default function App() {
-  return <BrowserRouter><Routes><Route path="/" element={<ConceptPage key="dark-home" concept="dark" />} />{CONCEPTS.map(({ id }) => <Route key={id} path={`/preview/${id}`} element={<ConceptPage key={id} concept={id} />} />)}<Route path="*" element={<Navigate to="/" replace />} /></Routes></BrowserRouter>;
+  return <BrowserRouter><Suspense fallback={null}><Routes><Route path="/" element={<ConceptPage key="dark-home" concept="dark" />} />{CONCEPTS.map(({ id }) => <Route key={id} path={`/preview/${id}`} element={<ConceptPage key={id} concept={id} />} />)}<Route path="/sample" element={<PlatformSample />} /><Route path="*" element={<Navigate to="/" replace />} /></Routes></Suspense></BrowserRouter>;
 }
