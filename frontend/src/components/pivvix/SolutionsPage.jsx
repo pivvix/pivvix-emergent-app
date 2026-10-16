@@ -4,7 +4,7 @@ import {
   Check, FileCheck2, Clock, Award, UserCheck, TrendingUp,
 } from "lucide-react";
 import { SharedHeader } from "./SharedHeader";
-import { SharedFooter, DemoDialog, useReveal, CTABand } from "./shared";
+import { SharedFooter, DemoDialog, useReveal, CTABand, CaseStudy } from "./shared";
 import { useDemo } from "./useDemo";
 import "./pivvix.css";
 
@@ -277,6 +277,14 @@ export default function SolutionsPage() {
       <main>
         <SolutionsHero openDemo={openDemo} />
         <TeamsGrid />
+        <CaseStudy
+          author="Marcus Lee" role="VP Engineering" company="GlobalWorks"
+          initials="ML" avatarClass="a4" logo="GlobalWorks"
+          testId="pv-case-solutions"
+        >
+          Pivvix handles our first-round interviews so our team can focus on the <em>final decisions.</em>
+          We've nearly doubled our hiring throughput without adding recruiters.
+        </CaseStudy>
         <HighVolumeSection />
         <TechnicalSection />
         <StaffingSection />

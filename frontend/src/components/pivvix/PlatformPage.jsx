@@ -6,7 +6,7 @@ import {
   Scale, Mail, ThumbsUp, ArrowRight,
 } from "lucide-react";
 import { SharedHeader } from "./SharedHeader";
-import { SharedFooter, DemoDialog, NovaAbstract, useReveal, CTABand, TrustStrip } from "./shared";
+import { SharedFooter, DemoDialog, NovaAbstract, useReveal, CTABand, TrustStrip, CaseStudy } from "./shared";
 import { useDemo } from "./useDemo";
 import "./pivvix.css";
 
@@ -547,6 +547,14 @@ export default function PlatformPage() {
         <TrustStrip />
         <Lifecycle />
         <AIDeepDive />
+        <CaseStudy
+          author="Sarah Chen" role="Head of Talent" company="InnovateTech"
+          initials="SC" avatarClass="a1" logo="InnovateTech"
+          testId="pv-case-platform"
+        >
+          Pivvix changed how we evaluate candidates. We finally see the <em>reasoning behind every rating</em> —
+          not just a number — and our hiring team moves faster, with more confidence.
+        </CaseStudy>
         <Comparison />
         <PlatformBenefits />
         <CTABand heading="Ready to see the" headingEm="full platform?" lead="See how Pivvix connects every stage of hiring — from first conversation to final decision." onDemo={openDemo} />

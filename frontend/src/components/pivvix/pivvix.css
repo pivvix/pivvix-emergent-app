@@ -634,6 +634,33 @@
 }
 
 /* ============================================================
+   CASE STUDY / TESTIMONIAL
+   ============================================================ */
+.pv-case-section { padding: 90px 0; }
+.pv-case { max-width: 920px; margin: 0 auto; background: var(--pv-white); border: 1px solid var(--pv-border); border-radius: 22px; padding: 56px 64px 44px; position: relative; box-shadow: 0 30px 56px -36px rgba(14, 48, 51, 0.14); display: flex; flex-direction: column; gap: 28px; overflow: hidden; }
+.pv-case::before { content: ""; position: absolute; top: -40px; right: -40px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(255, 107, 91, 0.08), transparent 65%); pointer-events: none; }
+.pv-case-mark { position: absolute; top: 24px; left: 48px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 110px; line-height: 1; color: var(--pv-coral); font-style: italic; opacity: 0.28; user-select: none; pointer-events: none; }
+.pv-case-body { margin: 0; padding-top: 24px; position: relative; z-index: 1; }
+.pv-case-body p { font-family: 'Fraunces', serif; font-weight: 400; font-size: 26px; line-height: 1.4; letter-spacing: -0.4px; color: var(--pv-ink); margin: 0; }
+.pv-case-body p em { font-style: italic; color: var(--pv-coral-ink); font-weight: 500; }
+.pv-case-foot { display: flex; align-items: center; gap: 16px; padding-top: 24px; border-top: 1px solid var(--pv-border-soft); position: relative; z-index: 1; }
+.pv-case-foot .pv-avatar { width: 48px; height: 48px; font-size: 15px; flex-shrink: 0; }
+.pv-case-who strong { display: block; font-size: 15px; font-weight: 700; color: var(--pv-ink); letter-spacing: -0.2px; }
+.pv-case-who span { display: block; font-size: 12.5px; color: var(--pv-ink-muted); margin-top: 2px; }
+.pv-case-logo { margin-left: auto; font-family: 'Manrope', sans-serif; font-size: 14px; font-weight: 700; color: var(--pv-ink-soft); letter-spacing: -0.3px; display: inline-flex; align-items: center; gap: 7px; }
+.pv-case-logo svg { width: 14px; height: 14px; }
+.pv-case-tag { position: absolute; top: 22px; right: 24px; font-size: 10px; font-weight: 600; color: var(--pv-ink-muted); letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; background: var(--pv-cream); border: 1px solid var(--pv-border-soft); border-radius: 999px; z-index: 2; }
+@media (max-width: 760px) {
+  .pv-case-section { padding: 56px 0; }
+  .pv-case { padding: 44px 24px 28px; border-radius: 18px; }
+  .pv-case-body p { font-size: 19px; }
+  .pv-case-mark { font-size: 72px; top: 12px; left: 18px; }
+  .pv-case-foot { flex-wrap: wrap; }
+  .pv-case-logo { margin-left: 0; }
+  .pv-case-tag { position: static; align-self: flex-start; margin-bottom: 8px; }
+}
+
+/* ============================================================
    END additions
    ============================================================ */
 @media (max-width: 1100px) {

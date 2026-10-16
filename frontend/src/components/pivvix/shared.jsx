@@ -232,6 +232,32 @@ export const CTABand = ({ eyebrow = "Ready to build extraordinary teams?", headi
   </section>
 );
 
+/* ---------- Case study / testimonial strip ---------- */
+export const CaseStudy = ({ children, author, role, company, initials, avatarClass = "a1", logo, testId = "pv-case" }) => (
+  <section className="pv-case-section cream" aria-label="Customer testimonial">
+    <div className="pv-container">
+      <figure className="pv-case pv-reveal" data-testid={testId}>
+        <span className="pv-case-tag">Illustrative</span>
+        <span className="pv-case-mark" aria-hidden="true">&ldquo;</span>
+        <blockquote className="pv-case-body"><p>{children}</p></blockquote>
+        <figcaption className="pv-case-foot">
+          <span className={`pv-avatar ${avatarClass}`}>{initials}</span>
+          <div className="pv-case-who">
+            <strong>{author}</strong>
+            <span>{role} · {company}</span>
+          </div>
+          {logo && (
+            <span className="pv-case-logo">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12l4 4 12-12" stroke="currentColor" strokeWidth="2" /></svg>
+              {logo}
+            </span>
+          )}
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+);
+
 /* ---------- Trust strip ---------- */
 export const TrustStrip = () => (
   <section className="pv-trust pv-container" aria-label="Trusted by">
