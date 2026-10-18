@@ -286,9 +286,9 @@ const stages = [
 ];
 
 const Lifecycle = () => {
-  const [active, setActive] = useState("05");
+  const [active, setActive] = useState(null);
   const stage = stages.find((s) => s.n === active);
-  const { Mock } = stage.preview;
+  const Mock = stage?.preview.Mock;
   return (
     <section className="pv-section cream-2" aria-labelledby="pv-lifecycle-heading" id="lifecycle">
       <div className="pv-container">
@@ -323,18 +323,28 @@ const Lifecycle = () => {
             </button>
           ))}
         </div>
-        <div className="pv-prev pv-reveal" id="pv-lifecycle-preview" role="tabpanel" aria-live="polite" data-testid={`pv-prev-${active}`}>
-          <div className="pv-prev-copy" key={`copy-${active}`} style={{ animation: "pv-prev-swap .5s cubic-bezier(0.2,0.8,0.2,1)" }}>
-            <span className="pv-tag">{stage.n} / {stage.t}</span>
-            <h3>{stage.preview.title}</h3>
-            <p>{stage.preview.desc}</p>
-            <ul>
-              {stage.preview.bullets.map((b) => <li key={b}><Check /> {b}</li>)}
-            </ul>
-          </div>
-          <div className="pv-prev-mock" key={`mock-${active}`}>
-            <Mock />
-          </div>
+        <div className="pv-prev pv-reveal" id="pv-lifecycle-preview" role="tabpanel" aria-live="polite" data-testid={`pv-prev-${active || "none"}`}>
+          {stage ? (
+            <>
+              <div className="pv-prev-copy" key={`copy-${active}`} style={{ animation: "pv-prev-swap .5s cubic-bezier(0.2,0.8,0.2,1)" }}>
+                <span className="pv-tag">{stage.n} / {stage.t}</span>
+                <h3>{stage.preview.title}</h3>
+                <p>{stage.preview.desc}</p>
+                <ul>
+                  {stage.preview.bullets.map((b) => <li key={b}><Check /> {b}</li>)}
+                </ul>
+              </div>
+              <div className="pv-prev-mock" key={`mock-${active}`}>
+                <Mock />
+              </div>
+            </>
+          ) : (
+            <div className="pv-prev-empty" data-testid="pv-prev-empty">
+              <span className="pv-tag">Select a stage</span>
+              <h3>Pick any stage above to see it in action.</h3>
+              <p>Each stage opens a working preview — the screens, signals, and evidence your team would actually work with.</p>
+            </div>
+          )}
         </div>
       </div>
     </section>
