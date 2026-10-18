@@ -285,24 +285,36 @@ const stages = [
     }},
 ];
 
+const STAGE_MS = 3500;
+
 const Lifecycle = () => {
   const [active, setActive] = useState(null);
   const [touring, setTouring] = useState(true);
   const [paused, setPaused] = useState(false);
   const [sectionRef, inView] = useInView(0.25);
+  const barRef = useRef(null);
   const stage = stages.find((s) => s.n === active);
   const Mock = stage?.preview.Mock;
 
+  /* Start on Sourcing with a full fresh read-time the moment the section appears */
   useEffect(() => {
-    if (!touring || !inView || paused) return undefined;
-    const id = setInterval(() => {
+    if (inView && touring && active === null) setActive(stages[0].n);
+  }, [inView, touring, active]);
+
+  /* Advance after the remaining time of the bar's animation, so resuming from a
+     pause continues where it froze instead of restarting a fresh 3.5s. */
+  useEffect(() => {
+    if (!touring || !inView || paused || !active) return undefined;
+    const animation = barRef.current?.getAnimations?.()[0];
+    const elapsed = Number(animation?.currentTime) || 0;
+    const id = setTimeout(() => {
       setActive((current) => {
         const i = stages.findIndex((s) => s.n === current);
         return stages[(i + 1) % stages.length].n;
       });
-    }, 3500);
-    return () => clearInterval(id);
-  }, [touring, inView, paused]);
+    }, Math.max(0, STAGE_MS - elapsed));
+    return () => clearTimeout(id);
+  }, [touring, inView, paused, active]);
 
   const pick = (n) => { setTouring(false); setActive(n); };
 
@@ -345,7 +357,7 @@ const Lifecycle = () => {
               <p>{d}</p>
               {touring && active === n && (
                 <span className="pv-stage-progress" aria-hidden="true" data-testid={`pv-stage-progress-${n}`}>
-                  <span style={{ animationPlayState: paused ? "paused" : "running" }} />
+                  <span ref={barRef} style={{ animationPlayState: paused ? "paused" : "running", animationDuration: `${STAGE_MS}ms` }} />
                 </span>
               )}
             </button>
