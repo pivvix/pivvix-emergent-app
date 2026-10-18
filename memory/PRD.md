@@ -55,3 +55,15 @@ Build a polished, premium marketing website for **Pivvix**, an AI-native hiring 
 
 ## Test credentials
 No auth yet. See `/app/memory/test_credentials.md`.
+
+## 2026-06 — Mobile nav & honesty pass
+- Mobile hamburger menu in SharedHeader (focus trap, Escape, scroll lock, aria-expanded/controls); desktop header unchanged.
+- Removed dead "Sign in" link (`#signin`) from header + CSS.
+- Trust strip relabelled: "The kind of teams Pivvix is built for" + "Illustrative — placeholder logos, not customers" tag.
+- Pricing FAQ data-training claim rewritten as a forward-looking design commitment.
+- Document titles now set centrally in App.js (`RouteTitle`, useLayoutEffect) — no stale-title flash on /pricing, /resources, /sample, /preview/*.
+- Verified via mobile + desktop screenshots (open/close, link nav, Escape focus return, demo modal from mobile CTA).
+
+### Backlog
+- P2: Replace illustrative logos/testimonial with real customer assets; reintroduce Sign in when real auth exists.
+- P2: ROI calculator on pricing page; email notifications (Resend/SendGrid) for demo requests.

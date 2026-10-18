@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   ArrowUpRight, Check, X, Zap, Rocket, Crown, Sparkles, Star,
 } from "lucide-react";
@@ -147,7 +146,7 @@ const faqs = [
   { q: "How is pricing calculated?", a: "Pricing scales with hiring volume (number of interviews per month) and team size. Book a demo and we'll suggest the tier that fits your roadmap — no surprises, no per-seat gotchas." },
   { q: "Can we try Pivvix before committing?", a: "Yes. Every engagement starts with a demo and a pilot on one or two real roles. You see the AI interview, the scorecard, and the evidence before you commit." },
   { q: "Do you offer month-to-month plans?", a: "Growth and Starter can run month-to-month or annually. Enterprise typically runs on an annual contract with a dedicated success manager." },
-  { q: "Who owns the interview data?", a: "You do. Transcripts, scorecards, and evidence belong to your team. We never train models on your candidate data." },
+  { q: "Who owns the interview data?", a: "You do. Transcripts, scorecards, and evidence belong to your team. Pivvix is being built on the principle that your candidate data is never used to train models — a design commitment we hold ourselves to, not a third-party audited certification." },
   { q: "What happens if we go over the included interview quota?", a: "You'll get a heads-up before you hit the limit, and we'll move you to a plan that fits — no interview is lost or capped mid-month." },
 ];
 
@@ -174,7 +173,6 @@ const FAQ = () => (
 export default function PricingPage() {
   useReveal();
   const { openDemo, demoOpen, closeDemo } = useDemo();
-  useEffect(() => { document.title = "Pivvix — Pricing"; }, []);
   return (
     <div className="pv-root" data-testid="pv-pricing">
       <SharedHeader active="pricing" onDemo={openDemo} />

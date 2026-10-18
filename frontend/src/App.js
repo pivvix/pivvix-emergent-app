@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, lazy, Suspense } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, lazy, Suspense } from "react";
 import { BrowserRouter, Link, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { ArrowUpRight, CalendarDays, Check, Layers2, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -65,9 +65,8 @@ function ConceptPage({ concept }) {
   const openModal = (type) => { triggerRef.current = document.activeElement; setModal(type); };
   const location = useLocation();
   useEffect(() => {
-    document.title = `Pivvix — ${currentConcept.name} Preview`;
     if (!location.hash) window.scrollTo({ top: 0, behavior: "instant" });
-  }, [currentConcept, location.pathname, location.hash]);
+  }, [location.pathname, location.hash]);
   return (
     <div className={`preview-page theme-${concept}`} id="top" data-testid={`preview-${concept}`}>
       <a className="skip-link" href="#main" data-testid="skip-to-content">Skip to content</a>
@@ -81,6 +80,25 @@ function ConceptPage({ concept }) {
   );
 }
 
+const ROUTE_TITLES = {
+  "/platform": "Pivvix — Platform",
+  "/solutions": "Pivvix — Solutions",
+  "/resources": "Pivvix — Resources",
+  "/pricing": "Pivvix — Pricing",
+  "/sample": "Pivvix — Platform (sample)",
+  "/preview/dark": "Pivvix — Dark Precision Preview",
+  "/preview/light": "Pivvix — Light Editorial Preview",
+  "/preview/chromatic": "Pivvix — Chromatic Editorial Preview",
+};
+
+const RouteTitle = () => {
+  const { pathname } = useLocation();
+  useLayoutEffect(() => {
+    document.title = ROUTE_TITLES[pathname] || "Pivvix — AI Hiring Platform";
+  }, [pathname]);
+  return null;
+};
+
 export default function App() {
-  return <BrowserRouter><Suspense fallback={null}><Routes><Route path="/" element={<Navigate to="/platform" replace />} /><Route path="/platform" element={<PlatformPage />} /><Route path="/solutions" element={<SolutionsPage />} /><Route path="/resources" element={<ResourcesPage />} /><Route path="/pricing" element={<PricingPage />} />{CONCEPTS.map(({ id }) => <Route key={id} path={`/preview/${id}`} element={<ConceptPage key={id} concept={id} />} />)}<Route path="/sample" element={<PlatformSample />} /><Route path="*" element={<Navigate to="/platform" replace />} /></Routes></Suspense></BrowserRouter>;
+  return <BrowserRouter><RouteTitle /><Suspense fallback={null}><Routes><Route path="/" element={<Navigate to="/platform" replace />} /><Route path="/platform" element={<PlatformPage />} /><Route path="/solutions" element={<SolutionsPage />} /><Route path="/resources" element={<ResourcesPage />} /><Route path="/pricing" element={<PricingPage />} />{CONCEPTS.map(({ id }) => <Route key={id} path={`/preview/${id}`} element={<ConceptPage key={id} concept={id} />} />)}<Route path="/sample" element={<PlatformSample />} /><Route path="*" element={<Navigate to="/platform" replace />} /></Routes></Suspense></BrowserRouter>;
 }

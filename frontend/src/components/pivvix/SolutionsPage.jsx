@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   ArrowUpRight, ArrowRight, Users, Briefcase, Code2, Building2, Play,
   Check, FileCheck2, Clock, Award, UserCheck, TrendingUp,
@@ -271,7 +271,6 @@ const EvidenceSection = () => {
 export default function SolutionsPage() {
   useReveal();
   const { openDemo, demoOpen, closeDemo } = useDemo();
-  useEffect(() => { document.title = "Pivvix — Solutions"; }, []);
   return (
     <div className="pv-root" data-testid="pv-solutions">
       <SharedHeader active="solutions" onDemo={openDemo} />

@@ -274,9 +274,10 @@ const LOGOS = [
 ];
 
 export const TrustStrip = () => (
-  <section className="pv-trust" aria-label="Trusted by">
-    <div className="pv-container">
-      <div className="pv-trust-head">Trusted by teams building what's next</div>
+  <section className="pv-trust" aria-label="Illustrative company logos">
+    <div className="pv-container pv-trust-head-row">
+      <div className="pv-trust-head">The kind of teams Pivvix is built for</div>
+      <span className="pv-trust-tag" data-testid="pv-trust-illustrative">Illustrative — placeholder logos, not customers</span>
     </div>
     <div className="pv-trust-marquee" aria-hidden="true">
       <div className="pv-trust-track" data-testid="pv-trust-track">

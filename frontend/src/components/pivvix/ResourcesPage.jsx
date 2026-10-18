@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import {
   ArrowUpRight, ArrowRight, BookOpen, Sparkles, ClipboardCheck, Users2,
   Lightbulb, Zap, TrendingUp, BarChart3, FileText,
@@ -148,7 +147,6 @@ const Articles = () => (
 export default function ResourcesPage() {
   useReveal();
   const { openDemo, demoOpen, closeDemo } = useDemo();
-  useEffect(() => { document.title = "Pivvix — Resources"; }, []);
   return (
     <div className="pv-root" data-testid="pv-resources">
       <SharedHeader active="resources" onDemo={openDemo} />

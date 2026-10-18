@@ -238,7 +238,6 @@ const CTABand = ({ openDemo }) => (
 export default function PlatformSample() {
   useReveal();
   const titleRef = useRef(null);
-  useEffect(() => { document.title = "Pivvix — Platform (sample)"; }, []);
   const openDemo = () => alert("Sample preview — Book-a-demo flow will be wired after design approval.");
   return (
     <div className="pv-root" data-testid="pv-sample" ref={titleRef}>

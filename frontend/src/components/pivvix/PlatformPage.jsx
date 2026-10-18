@@ -538,7 +538,6 @@ const Comparison = () => (
 export default function PlatformPage() {
   useReveal();
   const { openDemo, demoOpen, closeDemo } = useDemo();
-  useEffect(() => { document.title = "Pivvix — Platform"; }, []);
   return (
     <div className="pv-root" data-testid="pv-platform">
       <SharedHeader active="platform" onDemo={openDemo} />
