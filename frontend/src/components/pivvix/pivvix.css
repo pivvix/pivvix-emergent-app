@@ -156,6 +156,10 @@
 .pv-lifecycle-head p { max-width: 420px; margin-top: 20px; }
 .pv-stages { display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px; position: relative; margin-bottom: 36px; }
 .pv-stage { background: var(--pv-white); border: 1px solid var(--pv-border-soft); border-radius: 14px; padding: 22px 16px 20px; display: flex; flex-direction: column; gap: 14px; transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease, background-color .22s ease; position: relative; cursor: pointer; text-align: left; font: inherit; color: inherit; width: 100%; }
+.pv-stage-progress { position: absolute; left: 14px; right: 14px; bottom: 10px; height: 2px; border-radius: 2px; background: rgba(255,255,255,0.18); overflow: hidden; }
+.pv-stage-progress > span { display: block; height: 100%; width: 100%; border-radius: 2px; background: var(--pv-coral); transform-origin: left center; animation: pv-stage-fill 3.5s linear forwards; }
+@keyframes pv-stage-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
 .pv-stage:hover { transform: translateY(-3px); border-color: var(--pv-sage); box-shadow: 0 20px 40px -24px rgba(14, 48, 51, 0.18); }
 .pv-stage:focus-visible { outline: 2px solid var(--pv-coral); outline-offset: 3px; }
 .pv-stage-num { font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 700; color: var(--pv-sage-deep); letter-spacing: 1px; }

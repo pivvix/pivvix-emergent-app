@@ -343,6 +343,11 @@ const Lifecycle = () => {
               <span className="pv-stage-icon"><Icon /></span>
               <h4>{t}</h4>
               <p>{d}</p>
+              {touring && active === n && (
+                <span className="pv-stage-progress" aria-hidden="true" data-testid={`pv-stage-progress-${n}`}>
+                  <span style={{ animationPlayState: paused ? "paused" : "running" }} />
+                </span>
+              )}
             </button>
           ))}
         </div>
