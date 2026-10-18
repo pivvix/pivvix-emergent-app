@@ -287,10 +287,27 @@ const stages = [
 
 const Lifecycle = () => {
   const [active, setActive] = useState(null);
+  const [touring, setTouring] = useState(true);
+  const [paused, setPaused] = useState(false);
+  const [sectionRef, inView] = useInView(0.25);
   const stage = stages.find((s) => s.n === active);
   const Mock = stage?.preview.Mock;
+
+  useEffect(() => {
+    if (!touring || !inView || paused) return undefined;
+    const id = setInterval(() => {
+      setActive((current) => {
+        const i = stages.findIndex((s) => s.n === current);
+        return stages[(i + 1) % stages.length].n;
+      });
+    }, 3500);
+    return () => clearInterval(id);
+  }, [touring, inView, paused]);
+
+  const pick = (n) => { setTouring(false); setActive(n); };
+
   return (
-    <section className="pv-section cream-2" aria-labelledby="pv-lifecycle-heading" id="lifecycle">
+    <section className="pv-section cream-2" aria-labelledby="pv-lifecycle-heading" id="lifecycle" ref={sectionRef}>
       <div className="pv-container">
         <div className="pv-lifecycle-head pv-reveal">
           <div>
@@ -304,7 +321,13 @@ const Lifecycle = () => {
             so your team gets a consistent, evidence-backed process end-to-end.
           </p>
         </div>
-        <div className="pv-stages pv-reveal" role="tablist" aria-label="Hiring lifecycle stages">
+        <div
+          className="pv-stages pv-reveal"
+          role="tablist"
+          aria-label="Hiring lifecycle stages"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
           {stages.map(({ n, t, d, Icon }) => (
             <button
               key={n}
@@ -313,7 +336,7 @@ const Lifecycle = () => {
               aria-selected={active === n}
               aria-controls="pv-lifecycle-preview"
               className={`pv-stage ${active === n ? "active" : ""}`}
-              onClick={() => setActive(n)}
+              onClick={() => pick(n)}
               data-testid={`pv-stage-${n}`}
             >
               <span className="pv-stage-num">{n}</span>
