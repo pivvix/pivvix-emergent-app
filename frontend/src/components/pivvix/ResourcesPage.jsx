@@ -122,7 +122,7 @@ const Articles = () => (
       </div>
       <div className="pv-articles-grid pv-reveal">
         {articles.map((a, i) => (
-          <a key={i} className="pv-article" href="#" data-testid={`pv-article-${i}`}>
+          <a key={a.h} className="pv-article" href="#" data-testid={`pv-article-${i}`}>
             <div className={`pv-article-art ${a.art}`}>
               <svg viewBox="0 0 120 120" aria-hidden="true">
                 <circle cx="60" cy="60" r="40" fill="none" stroke={a.color} strokeWidth="1.2" strokeDasharray="2 4" opacity="0.5" />

@@ -64,8 +64,8 @@ const Tier = ({ Icon, name, desc, meta, cta, ctaType, items, featured, badge, on
     </div>
     <span className="pv-tier-meta">What's included</span>
     <ul>
-      {items.map((it, i) => (
-        <li key={i} className={!it.on ? "off" : ""}>
+      {items.map((it) => (
+        <li key={it.t} className={!it.on ? "off" : ""}>
           {it.on ? <Check /> : <X />} {it.t}
         </li>
       ))}
@@ -129,8 +129,8 @@ const Matrix = () => (
       </div>
       <div className="pv-compare-table pv-reveal">
         <div className="pv-cmp-row head"><div>Feature</div><div>Starter</div><div>Growth</div><div>Enterprise</div></div>
-        {matrix.map((r, i) => (
-          <div className="pv-cmp-row" key={i}>
+        {matrix.map((r) => (
+          <div className="pv-cmp-row" key={r.f}>
             <div>{r.f}</div>
             <div className={r.s === "✓" ? "yes" : "no"}>{r.s === "✓" ? <Check size={16} style={{ display: "inline" }} /> : "—"}</div>
             <div className={r.g === "✓" ? "yes" : "no"}>{r.g === "✓" ? <Check size={16} style={{ display: "inline" }} /> : "—"}</div>
@@ -160,7 +160,7 @@ const FAQ = () => (
       </div>
       <div className="pv-faq pv-reveal">
         {faqs.map((f, i) => (
-          <details className="pv-faq-item" key={i} data-testid={`pv-faq-${i}`}>
+          <details className="pv-faq-item" key={f.q} data-testid={`pv-faq-${i}`}>
             <summary>{f.q}</summary>
             <p>{f.a}</p>
           </details>

@@ -159,7 +159,7 @@ const ScreeningMock = () => (
       { q: "Comfortable with on-call rotations?", r: "pass", t: "Pass" },
       { q: "Describe a recent system-design decision.", r: "review", t: "Review" },
     ].map((x, i) => (
-      <div className="pv-mini-row" key={i}>
+      <div className="pv-mini-row" key={x.q}>
         <div className="pv-mini-row-l" style={{ gap: 8 }}>
           <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "var(--pv-ink-muted)", width: 20 }}>Q{i + 1}</span>
           <div><strong style={{ fontSize: 11.5 }}>{x.q}</strong></div>
@@ -183,8 +183,8 @@ const SchedulingMock = () => (
       ].map((c) => (
         <div className="pv-cal-col" key={c.d}>
           <span className="pv-cal-day">{c.d}</span>
-          {c.slots.map((s, i) => (
-            <span key={i} className={`pv-cal-slot ${s.s}`}>{s.t}</span>
+          {c.slots.map((s) => (
+            <span key={`${c.d}-${s.t}`} className={`pv-cal-slot ${s.s}`}>{s.t}</span>
           ))}
         </div>
       ))}
@@ -329,7 +329,7 @@ const Lifecycle = () => {
             <h3>{stage.preview.title}</h3>
             <p>{stage.preview.desc}</p>
             <ul>
-              {stage.preview.bullets.map((b, i) => <li key={i}><Check /> {b}</li>)}
+              {stage.preview.bullets.map((b) => <li key={b}><Check /> {b}</li>)}
             </ul>
           </div>
           <div className="pv-prev-mock" key={`mock-${active}`}>

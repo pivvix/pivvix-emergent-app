@@ -67,7 +67,7 @@ function ConceptPage({ concept }) {
   useEffect(() => {
     document.title = `Pivvix — ${currentConcept.name} Preview`;
     if (!location.hash) window.scrollTo({ top: 0, behavior: "instant" });
-  }, [currentConcept.name, location.pathname, location.hash]);
+  }, [currentConcept, location.pathname, location.hash]);
   return (
     <div className={`preview-page theme-${concept}`} id="top" data-testid={`preview-${concept}`}>
       <a className="skip-link" href="#main" data-testid="skip-to-content">Skip to content</a>
