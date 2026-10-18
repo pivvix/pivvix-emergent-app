@@ -1,0 +1,38 @@
+{
+  "summary": "Iteration 5: frontend-only test of mobile nav, Sign-in removal, trust-strip label, Pricing FAQ copy and route titles. Used Playwright at 390x844 and 1440x800 on the preview URL. All 11 requested items pass. Found one minor edge case: if the browser is resized from mobile to desktop width while the menu is open, page scrolling stays locked.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "SharedHeader mobile nav", "issue": "If the mobile menu is open and the viewport grows past 760px (resize or tablet rotation), the toggle is hidden by CSS but open stays true. body.style.overflow stays 'hidden', so the desktop page cannot scroll (scrollY stayed 0 after mouse.wheel). The only way out is Escape. Fix: close the menu on a matchMedia('(min-width: 761px)') change, or only lock scroll while the media query matches.", "selector": "[data-testid='pv-menu-toggle']", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verified": [
+    "Mobile 390x844: toggle visible on /platform, /solutions, /resources, /pricing. Opening shows pv-mobile-nav with 4 links plus the demo button, all visible. aria-expanded false->true->false. body overflow 'hidden' while open, '' after closing.",
+    "Focus moves to the first panel link when the menu opens. Tab cycles solutions->resources->pricing->demo->platform and wraps. Shift+Tab wraps in reverse. Focus stays inside the panel.",
+    "Escape closes the menu and focus returns to pv-menu-toggle. Tapping the toggle again also closes it and returns focus to the toggle. When closed, the panel is inert with max-height 0 and opacity 0.",
+    "Tapping a mobile nav link closes the panel and navigates via SPA routing: a window marker survived /platform->/pricing->/resources, so there was no full reload. Scroll lock is released and the current page's link has the 'active' class (coral).",
+    "Mobile 'Book a demo' closes the panel and opens the demo dialog. Closing the dialog restores body overflow. Submitting the form sent POST /api/demo-requests, which returned 200, and the success state showed.",
+    "No pv-signin element and no 'Sign in' text in the header on mobile or desktop.",
+    "/platform TrustStrip shows the heading 'The kind of teams Pivvix is built for' and the visible pv-trust-illustrative tag. The tag also renders well on mobile. TrustStrip is used only on PlatformPage.",
+    "Pricing FAQ: the old absolute claim is gone and the new answer reads as a design commitment, not an audited certification.",
+    "Titles: a MutationObserver on <title> recorded exactly one mutation per SPA navigation, each with the correct title and no stale or intermediate value. Checked /solutions, /resources, /pricing, /platform, /preview/light|chromatic|dark. Direct loads of /sample ('Pivvix — Platform (sample)') and /preview/dark are correct. Unknown route redirects to /platform with the correct title.",
+    "Desktop 1440x800: toggle and mobile panel hidden. All 4 desktop nav links navigate via SPA with active state. Header 'Book a demo' opens the dialog. No layout regressions seen."
+  ],
+  "test_report_links": [],
+  "action_items": [
+    "LOW: Close the mobile menu (or release body scroll lock) when the viewport crosses above 760px while it is open."
+  ],
+  "critical_code_review_comments": [
+    "SharedHeader: the focus trap excludes the toggle/close (X) button because it is outside panelRef. Keyboard users can close only with Escape. Consider adding the toggle to the trap's focusable list.",
+    "After closing the demo dialog opened from the mobile CTA, focus lands on BODY rather than the toggle. Minor a11y nit: the trigger button is now inert, so returning focus to pv-menu-toggle would be better.",
+    "SharedHeader.jsx line 115: the inert spread has inconsistent indentation (cosmetic)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (not requested; demo POST verified via UI)", "frontend": "100% of requested items (1 low-priority edge case found)"},
+  "seed_data_creation": "One demo request via UI: name 'TEST_Iter5 Mobile', email test_iter5@example.com",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Long single Playwright scripts hit the tool's context deadline. Split them into short scripts (~10 actions each). Panel testids: pv-menu-toggle, pv-mobile-nav, pv-mobile-nav-{platform,solutions,resources,pricing,demo}. The dialog close is pv-dialog-close. Use a MutationObserver on <title> to detect stale-title flashes."
+}

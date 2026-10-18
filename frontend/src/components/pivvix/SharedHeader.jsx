@@ -48,8 +48,9 @@ export const SharedHeader = ({ active = "platform", onDemo }) => {
         return;
       }
       if (event.key !== "Tab") return;
-      const focusables = panelRef.current?.querySelectorAll("a[href], button:not([disabled])");
-      if (!focusables || focusables.length === 0) return;
+      const panelFocusables = panelRef.current?.querySelectorAll("a[href], button:not([disabled])");
+      if (!panelFocusables || panelFocusables.length === 0) return;
+      const focusables = [toggleRef.current, ...panelFocusables].filter(Boolean);
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
       if (event.shiftKey && document.activeElement === first) {
@@ -61,9 +62,14 @@ export const SharedHeader = ({ active = "platform", onDemo }) => {
       }
     };
 
+    const desktop = window.matchMedia("(min-width: 761px)");
+    const onBreakpoint = (event) => { if (event.matches) setOpen(false); };
+    desktop.addEventListener("change", onBreakpoint);
+
     document.addEventListener("keydown", onKeyDown);
     return () => {
       document.removeEventListener("keydown", onKeyDown);
+      desktop.removeEventListener("change", onBreakpoint);
       document.body.style.overflow = previousOverflow;
     };
   }, [open, close]);
@@ -112,7 +118,7 @@ export const SharedHeader = ({ active = "platform", onDemo }) => {
         data-testid="pv-mobile-nav"
         aria-label="Mobile"
         aria-hidden={!open}
-          {...(open ? {} : { inert: true })}
+        {...(open ? {} : { inert: true })}
       >
         <nav className="pv-mobile-nav-list">
           {NAV_ITEMS.map((item) => (
