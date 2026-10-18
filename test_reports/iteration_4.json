@@ -1,0 +1,28 @@
+{
+  "summary": "Iteration 4 regression test after code-quality refactor (index-as-key -> stable keys, use-toast dep fix). Reviewed git diff (12 lines across 5 files), all changes correct. Ran Playwright against dev build (bundle.js, so React key warnings would surface) on /platform, /solutions, /resources, /pricing: ZERO console errors/warnings/pageerrors on all pages. All 12 requested features verified working; no regressions.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "verified": [
+    "/platform: header nav 4 links; CountUp animates (not 124 at load, 124/42/18/9 after ~3s); 4 candidate rows with match bars 92/87/82/78",
+    "/platform: pv-trust-track has 20 children; transform changes over 1s; animationPlayState=paused on mouse hover",
+    "/platform: stages 01/04/07 get 'active' class, preview copy + mock swap each click (Sourcing/Scheduling calendar/Decide); all 7 stages clicked with no key warnings",
+    "/platform: comparison shows Aarav 92% / Neha 87% with timestamps 04:32,06:18,08:14,09:02,11:07,11:52; pv-case-platform (Sarah Chen, InnovateTech) precedes pv-compare",
+    "/solutions: stakeholder cards x4, team cards x4, case strip Marcus Lee/GlobalWorks, tabs Competencies/Reasoning/Evidence/Summary each get 'active' when clicked",
+    "/resources: featured guide, 4 categories, 6 articles",
+    "/pricing: 3 tiers (Growth has 'featured' + MOST POPULAR), 9 matrix rows, 5 FAQs toggle open/closed; Pricing nav link 'active' with coral rgb(255,107,91) 44px underline",
+    "Demo modal: opened/closed 3x cleanly, form filled + submitted -> POST /api/demo-requests 200, success state shown; JS heap stable (26.0MB before/after)"
+  ],
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "use-toast.js fix ([state] -> []) is correct (matches upstream shadcn), but neither useToast nor Toaster is imported anywhere outside components/ui, so this hook does not run on the marketing pages. Its runtime impact cannot be seen there, and the 'stale listener' check only applies if a Toaster is mounted later.",
+    "App.js ConceptPage dep changed from currentConcept.name to currentConcept: fine as long as currentConcept is a stable module-level reference (legacy route only, not tested per request).",
+    "Composite/text keys (x.q, it.t, r.f, f.q, a.h, b, `${c.d}-${s.t}`) are unique in current data. If any list ever gets duplicate text, those keys will collide."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (not requested; demo POST verified via UI)", "frontend": "100%"},
+  "seed_data_creation": "One demo request created via UI: name 'TEST_Iter4 User', email test_iter4@example.com",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Marquee pv-trust-track is constantly animating: Playwright hover/scroll_into_view time out waiting for it to be stable, so use page.mouse.move on its bounding box. Useful testids: pv-stage-01..07, pv-tab-*, pv-faq-0..4, pv-article-0..5, pv-header-demo, pv-cta-demo, pv-dialog-close, pv-form-name/email/company/size/message/submit."
+}
