@@ -3,6 +3,7 @@ import {
   ArrowUpRight, ArrowRight, Users, Briefcase, Code2, Building2, Play,
   Check, FileCheck2, Clock, Award, UserCheck, TrendingUp,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { SharedHeader } from "./SharedHeader";
 import { SharedFooter, DemoDialog, useReveal, CTABand, CaseStudy } from "./shared";
 import { useDemo } from "./useDemo";
@@ -25,9 +26,9 @@ const SolutionsHero = ({ openDemo }) => (
           <button className="pv-btn pv-btn--coral" onClick={openDemo} data-testid="pv-sol-demo">
             Book a demo <ArrowUpRight size={16} />
           </button>
-          <a href="/platform" className="pv-btn pv-btn--link" data-testid="pv-sol-platform">
+          <Link to="/platform" className="pv-btn pv-btn--link" data-testid="pv-sol-platform">
             Explore the platform <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
       </div>
       <div className="pv-stakes pv-reveal" aria-hidden="true">

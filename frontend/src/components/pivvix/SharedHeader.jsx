@@ -1,4 +1,5 @@
 import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const BrandMark = () => (
   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -8,26 +9,34 @@ const BrandMark = () => (
   </svg>
 );
 
+/* Prefetch lazy-loaded route chunks on hover so the first click feels instant */
+const prefetch = {
+  platform: () => import("./PlatformPage"),
+  solutions: () => import("./SolutionsPage"),
+  resources: () => import("./ResourcesPage"),
+  pricing: () => import("./PricingPage"),
+};
+
 export const SharedHeader = ({ active = "platform", onDemo }) => (
   <header className="pv-header" data-testid="pv-header">
     <div className="pv-container pv-header-inner">
-      <a href="#top" className="pv-brand" data-testid="pv-brand">
+      <Link to="/platform" className="pv-brand" data-testid="pv-brand">
         <BrandMark />
         PIVVIX
-      </a>
+      </Link>
       <nav className="pv-nav" aria-label="Primary">
-        <a href="/platform" className={active === "platform" ? "active" : ""} data-testid="pv-nav-platform">
+        <Link to="/platform" className={active === "platform" ? "active" : ""} data-testid="pv-nav-platform" onMouseEnter={prefetch.platform}>
           Platform <ChevronDown size={11} />
-        </a>
-        <a href="/solutions" className={active === "solutions" ? "active" : ""} data-testid="pv-nav-solutions">
+        </Link>
+        <Link to="/solutions" className={active === "solutions" ? "active" : ""} data-testid="pv-nav-solutions" onMouseEnter={prefetch.solutions}>
           Solutions <ChevronDown size={11} />
-        </a>
-        <a href="/resources" className={active === "resources" ? "active" : ""} data-testid="pv-nav-resources">
+        </Link>
+        <Link to="/resources" className={active === "resources" ? "active" : ""} data-testid="pv-nav-resources" onMouseEnter={prefetch.resources}>
           Resources
-        </a>
-        <a href="/pricing" className={active === "pricing" ? "active" : ""} data-testid="pv-nav-pricing">
+        </Link>
+        <Link to="/pricing" className={active === "pricing" ? "active" : ""} data-testid="pv-nav-pricing" onMouseEnter={prefetch.pricing}>
           Pricing
-        </a>
+        </Link>
       </nav>
       <a href="#signin" className="pv-signin" data-testid="pv-signin">Sign in</a>
       <button type="button" className="pv-btn pv-btn--coral" data-testid="pv-header-demo" onClick={onDemo}>

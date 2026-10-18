@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { X, Check, ArrowUpRight, Twitter, Linkedin, Github, Youtube } from "lucide-react";
 
 /* ---------- Reveal-on-scroll hook ---------- */
@@ -75,14 +76,14 @@ export const SharedFooter = ({ onDemo }) => (
     <div className="pv-container">
       <div className="pv-footer-grid">
         <div className="pv-footer-brand">
-          <a href="/platform" className="pv-brand">
+          <Link to="/platform" className="pv-brand">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M3 6l9-4 9 4-9 4-9-4z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
               <path d="M3 12l9 4 9-4" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" opacity="0.6" />
               <path d="M3 18l9 4 9-4" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" opacity="0.3" />
             </svg>
             PIVVIX
-          </a>
+          </Link>
           <p>AI interviews. Human decisions. An end-to-end hiring platform built for real teams.</p>
           <button type="button" className="pv-btn pv-btn--coral" onClick={onDemo} data-testid="pv-footer-demo">
             Book a demo <ArrowUpRight size={16} />
@@ -91,29 +92,29 @@ export const SharedFooter = ({ onDemo }) => (
         <div className="pv-footer-col">
           <h5>Platform</h5>
           <ul>
-            <li><a href="/platform">Overview</a></li>
-            <li><a href="/platform#lifecycle">Hiring lifecycle</a></li>
-            <li><a href="/platform#ai">AI interview</a></li>
-            <li><a href="/platform#compare">Comparison</a></li>
-            <li><a href="/pricing">Pricing</a></li>
+            <li><Link to="/platform">Overview</Link></li>
+            <li><Link to="/platform#lifecycle">Hiring lifecycle</Link></li>
+            <li><Link to="/platform#ai">AI interview</Link></li>
+            <li><Link to="/platform#compare">Comparison</Link></li>
+            <li><Link to="/pricing">Pricing</Link></li>
           </ul>
         </div>
         <div className="pv-footer-col">
           <h5>Solutions</h5>
           <ul>
-            <li><a href="/solutions#talent">Talent teams</a></li>
-            <li><a href="/solutions#managers">Hiring managers</a></li>
-            <li><a href="/solutions#technical">Technical teams</a></li>
-            <li><a href="/solutions#agencies">Staffing &amp; agencies</a></li>
+            <li><Link to="/solutions#talent">Talent teams</Link></li>
+            <li><Link to="/solutions#managers">Hiring managers</Link></li>
+            <li><Link to="/solutions#technical">Technical teams</Link></li>
+            <li><Link to="/solutions#agencies">Staffing &amp; agencies</Link></li>
           </ul>
         </div>
         <div className="pv-footer-col">
           <h5>Resources</h5>
           <ul>
-            <li><a href="/resources">All articles</a></li>
-            <li><a href="/resources#guides">Hiring guides</a></li>
-            <li><a href="/resources#ai">AI interviews</a></li>
-            <li><a href="/resources#evaluation">Assessment</a></li>
+            <li><Link to="/resources">All articles</Link></li>
+            <li><Link to="/resources#guides">Hiring guides</Link></li>
+            <li><Link to="/resources#ai">AI interviews</Link></li>
+            <li><Link to="/resources#evaluation">Assessment</Link></li>
           </ul>
         </div>
       </div>
@@ -224,9 +225,9 @@ export const CTABand = ({ eyebrow = "Ready to build extraordinary teams?", headi
         <button className="pv-btn pv-btn--coral" onClick={onDemo} data-testid="pv-cta-demo">
           Book a demo <ArrowUpRight size={16} />
         </button>
-        <a href="/platform" className="pv-btn pv-btn--outline on-dark" data-testid="pv-cta-platform">
+        <Link to="/platform" className="pv-btn pv-btn--outline on-dark" data-testid="pv-cta-platform">
           Explore the platform
-        </a>
+        </Link>
       </div>
     </div>
   </section>
