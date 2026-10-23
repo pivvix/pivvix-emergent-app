@@ -131,8 +131,15 @@ export const SharedFooter = ({ onDemo }) => (
   </footer>
 );
 
-/* ---------- Demo Dialog ---------- */
-const BACKEND = process.env.REACT_APP_BACKEND_URL;
+/* ---------- Demo Dialog ----------
+ * Posts to the real Pivvix backend's public demo-request endpoint
+ * (packages/web/src/app/api/public/demo-request/route.ts), not the
+ * bundled FastAPI/Mongo backend under backend/ in this repo — that one
+ * has no auth, no production use, and is not deployed with this site.
+ * REACT_APP_BACKEND_URL should be set to https://app.pivvix.com in every
+ * deployed environment; it stays env-driven so local dev / previews can
+ * point at a different backend if needed. */
+const BACKEND = process.env.REACT_APP_BACKEND_URL || "https://app.pivvix.com";
 
 export const DemoDialog = ({ open, onClose }) => {
   const [form, setForm] = useState({ name: "", email: "", company: "", team_size: "11-50", message: "" });
@@ -154,7 +161,7 @@ export const DemoDialog = ({ open, onClose }) => {
     e.preventDefault();
     setState({ submitting: true, success: false, error: null });
     try {
-      const res = await fetch(`${BACKEND}/api/demo-requests`, {
+      const res = await fetch(`${BACKEND}/api/public/demo-request`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
